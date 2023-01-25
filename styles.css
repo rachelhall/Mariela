@@ -149,6 +149,10 @@ a {
   color: inherit;
 }
 
+main {
+  padding: 1rem;
+}
+
 .contact {
   min-height: 400px;
   background-color: red;
@@ -189,6 +193,7 @@ a {
   color: white;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .iframe-container {
@@ -196,6 +201,7 @@ a {
   width: 100%;
   padding-bottom: 56.25%;
   height: 0;
+  left: 0;
 }
 .iframe-container iframe {
   position: absolute;
@@ -203,11 +209,12 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
+  border: 0;
 }
 
 main {
   max-width: 800px;
-  margin: 4rem auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -241,15 +248,15 @@ section {
   margin: 3rem 0;
 }
 
-.spotify {
-  padding: 0;
-  margin: 2rem 0;
+#listen {
+  width: 580px;
 }
 
 .sub-heading {
   color: white;
   font-size: 3rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .video-overlay::after {
@@ -284,4 +291,19 @@ section {
   background: rgba(0, 0, 0, 0.5);
   z-index: 2;
   opacity: 0.7;
+}
+
+/* Mobile Styles */
+
+@media screen and (max-width: 650px) {
+  #listen {
+    width: unset;
+  }
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  li {
+    margin: 0.5rem 0;
+  }
 }
