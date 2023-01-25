@@ -9,15 +9,67 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="video-overlay">
+      <video autoplay muted loop class="video-background">
+        <source src="background.mp4" type="video/mp4" />
+      </video>
+    </div>
     <main class="main">
-      <div class="video-overlay">
-        <video autoplay muted loop class="video-background">
-          <source src="background.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <section class="content">
+      <section class="header">
         <h1 class="heading">Mariela</h1>
+        <p class="description">Indie rock band from San Diego, CA</p>
+
+        <nav>
+          <ul>
+            <li><a href="#watch">Watch</a></li>
+            <li><a href="#listen">Listen</a></li>
+            <li><a href="#">Read</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
       </section>
+
+      <div class="iframe-container" id="watch">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/QkziEM4p9x4"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          X-fra
+        ></iframe>
+      </div>
+      <section id="listen">
+        <iframe
+          style="border-radius: 12px"
+          src="https://open.spotify.com/embed/artist/0fOdB0OUb1fBfHf8V4N3Hy?utm_source=generator&theme=0"
+          width="560px"
+          height="680"
+          frameborder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          class="spotify"
+        ></iframe>
+      </section>
+
+      <section id="read" class="read">
+        <h2 class="sub-heading">Nashville Radio Says</h2>
+        <p class="description">Lightning 100's Local Artist of the Week</p>
+        <iframe
+          width="560"
+          height="680"
+          src="https://lightning100.com/localmusic/mariela-local-artist-of-the-week/"
+          title="Lightning 100 Local Artist of the Week"
+          class="read-iframe"
+        ></iframe>
+      </section>
+
+      <h2 id="contact" class="sub-heading">Send us an email</h2>
+      <a class="email" href="mailto:thebandmariela@gmail.com"
+        >thebandmariela@gmail.com</a
+      >
     </main>
   </body>
 </html>
