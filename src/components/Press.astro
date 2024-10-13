@@ -1,0 +1,50 @@
+---
+import Text from "./Text.astro";
+---
+
+<div class="press">
+  <Text color="primary-900" type="heading-sm">Press & Reviews</Text>
+  <ul>
+    <li>
+      <strong>The San Diego Troubador</strong> —
+      <a
+        href="https://sandiegotroubadour.com/theres-no-coming-back-from-moria/"
+        target="_blank">There's No Coming Back from Moriah</a
+      >, <a
+        href="https://sandiegotroubadour.com/mariela-a-sanctuary-for-rachel-hall/"
+        target="_blank">Mariela: A Sanctuary for Rachel Hall</a
+      >
+    </li>
+    <li>
+      <strong>Lightning 100</strong> —
+      <a
+        href="https://lightning100.com/localmusic/mariela-local-artist-of-the-week/"
+        target="_blank">Mariela: Local Artist of the Week</a
+      >
+    </li>
+  </ul>
+</div>
+<style>
+  .press {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    color: var(--primary-900);
+  }
+
+  ul {
+    list-style: none;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  a {
+    color: var(--primary-900);
+  }
+  a:hover {
+    color: var(--primary-700);
+  }
+</style>

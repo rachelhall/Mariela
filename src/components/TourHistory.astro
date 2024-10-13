@@ -6,21 +6,62 @@ import Text from "./Text.astro";
   <Text textAlign="center" uppercase type="heading-sm" color="white"
     >Tour/Show History</Text
   >
-  <div class="collection">
-    <Text color="white" uppercase bold type="heading-xs">Festivals</Text>
-    <ul>
-      <li>SheFest, 2024 — San Diego, CA</li>
-      <li>San Diego Pride, 2023 — San Diego, CA</li>
-      <li>Adams Ave Street Festival, 2023 — San Diego, CA</li>
-      <li>SheFest, 2023 — San Diego, CA</li>
-      <li>Black Potato Festival, 2019 — Clinton, NJ</li>
-      <li>Alpharetta Pop Festival, 2018, Atlanta, GA</li>
-    </ul>
+  <div class="content">
+    <div class="collection">
+      <Text color="white" uppercase bold type="heading-xs">Festivals</Text>
+      <ul>
+        <li><strong>SheFest, 2024</strong> — San Diego, CA</li>
+        <li><strong>San Diego Pride</strong>, 2023 — San Diego, CA</li>
+        <li>
+          <strong>Adams Ave Street Festival</strong>, 2023 — San Diego, CA
+        </li>
+        <li><strong>SheFest, 2023</strong> — San Diego, CA</li>
+        <li><strong>Black Potato Festival</strong>, 2019 — Clinton, NJ</li>
+        <li><strong>Alpharetta Pop Festival, 2018</strong> — Atlanta, GA</li>
+      </ul>
+    </div>
+    <div class="collection">
+      <Text color="white" uppercase bold type="heading-xs">Cities & Venues</Text
+      >
+      <ul class="cities">
+        <li>
+          <strong>Nashville</strong> (The East Room, The 5 Spot, The Basement, The
+          End, The Cobra, DRKMTTR Collective, The Springwater, Cafe Coco, Kimbro's
+          Pickin' Parlor, Rocketown, The Bowery Vault The Highwatt, The Country,
+          T )
+        </li>
+        <li>
+          <strong>San Diego</strong> (The Belly Up, The Music Box, Soda Bar,The Black
+          Cat, The Whistle Stop, The Ould Sod, Winstons, The Holding Company)
+        </li>
+        <li>
+          <strong>Los Angeles</strong> (Saint Rocke, The Fox Den, Bobby V's)
+        </li>
+        <li><strong>New York</strong> (C'Mon Everybody, Pianos)</li>
+        <li><strong>Atlanta</strong>(Eddie's Attic, The Masquerade)</li>
+        <li><strong>Cincinnati</strong> (Urban Artifact, Northside Tavern)</li>
+        <li><strong>Birmingham</strong> (The Nick)</li>
+        <li><strong>Charlottesville</strong> (The Twisted Tea Bazaar)</li>
+        <li><strong>Washington D.C.</strong> (The Electric Maid)</li>
+        <li><strong>Dallas</strong> (Ruins)</li>
+        <li><strong>Tulsa</strong> (The Colony)</li>
+        <li><strong>Springfield, MO</strong> (The Riff)</li>
+        <li><strong>St. Louis</strong> (Moshmellow)</li>
+        <li><strong>Chicago</strong> (Hideout)</li>
+        <li><strong>South Bend</strong> (Stockroom East)</li>
+        <li><strong>Grand Rapids</strong> (Fountain Street Church)</li>
+        <li><strong>Maryville, TN</strong> (The Bird and the Book)</li>
+        <li><strong>Chattanooga</strong> (Barking Legs Theatre)</li>
+        <li><strong>Charlotte, NC</strong> (Watershed Charlotte)</li>
+        <li><strong>Louisville</strong> (Odeon)</li>
+        <li><strong>Florence, AL</strong> (116 E Mobile)</li>
+      </ul>
+    </div>
   </div>
 </div>
 <style>
   .shows {
-    background-color: var(--primary-500);
+    background-color: var(--primary-700);
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -28,6 +69,15 @@ import Text from "./Text.astro";
     align-items: center;
   }
 
+  .content {
+    max-width: 60%;
+  }
+
   .collection {
+  }
+  ul {
+  }
+  li {
+    font-weight: 100;
   }
 </style>
