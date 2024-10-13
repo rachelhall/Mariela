@@ -1,0 +1,10 @@
+:root {
+    --white: #e3ebf2;
+    --primary-100: #b9d6f2ff;
+    --primary-300: #006daaff;
+    --primary-500: #0353a4ff;
+    --primary-700: #003559ff;
+    --primary-900: #061a40ff;
+
+    --screen-900:rgba(6, 26, 64, .5)
+}

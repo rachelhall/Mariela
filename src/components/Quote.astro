@@ -1,0 +1,19 @@
+---
+import Text from "./Text.astro";
+const { quote, author, publication } = Astro.props;
+---
+
+<div class="quote">
+  <Text italic light color="white">"{quote}"</Text>
+  <div class="attribution">
+    <Text textAlign="right" color="white">{author}, </Text>
+    <Text textAlign="right" italic color="white">{publication}</Text>
+  </div>
+</div>
+<style>
+  .attribution {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+</style>

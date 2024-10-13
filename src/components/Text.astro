@@ -1,0 +1,110 @@
+---
+interface Props {
+  type?:
+    | "heading-xl"
+    | "heading-lg"
+    | "heading-md"
+    | "heading-sm"
+    | "heading-xs"
+    | "body";
+
+  color?:
+    | "white"
+    | "primary-100"
+    | "primary-300"
+    | "primary-500"
+    | "primary-700"
+    | "primary-900";
+  className?: string;
+  textAlign?: "left" | "right" | "center";
+  uppercase?: boolean;
+  italic?: boolean;
+  bold?: boolean;
+  light?: boolean;
+}
+
+const {
+  bold,
+  color = "primary-300",
+  italic,
+  light,
+  textAlign,
+  type = "body",
+  className,
+  uppercase,
+} = Astro.props;
+
+const styles = { color: `var(--${color})`, textAlign };
+
+const getElement = () => {
+  switch (type) {
+    case "heading-xl":
+      return "h1";
+    case "heading-lg":
+      return "h2";
+    case "heading-md":
+      return "h3";
+    case "heading-sm":
+      return "h4";
+    case "heading-xs":
+      return "h5";
+    case "body":
+      return "p";
+    default:
+      return "p";
+  }
+};
+
+const Element = getElement();
+---
+
+<Element
+  class:list={[className, { uppercase, bold, italic, light }]}
+  style={styles}><slot /></Element
+>
+
+<style>
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .light {
+    font-weight: 100;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+</style>

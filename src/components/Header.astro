@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+import Socials from "../components/Socials.astro";
+import Nav from "../components/Nav.astro";
+import marielaSitting from "../images/mariela-sitting.png";
+import Text from "../components/Text.astro";
+import Quote from "../components/Quote.astro";
+
+interface Props {
+  heading?: string;
+  headerImage?: ImageMetadata;
+  subheading?: string;
+  quote?: string;
+  author?: string;
+  publication?: string;
+}
+const { heading, headerImage, subheading, quote, author, publication } =
+  Astro.props;
+---
+
+<div class="header">
+  <Nav />
+  <Socials />
+  <div class="image-wrapper">
+    <div class="overlay"></div>
+    <Image
+      class="background-image"
+      src={marielaSitting}
+      alt="Mariela sitting on a gray backdrop wearing a sequin gold and black leopard print top and a black leather skirt."
+    />
+  </div>
+  {
+    heading && (
+      <div class="content-wrapper">
+        <div class="content">
+          <div class="heading-container">
+            {headerImage && (
+              <Image
+                class="header-image"
+                height="160"
+                src={headerImage}
+                alt="An album cover"
+              />
+            )}
+            <div class="heading">
+              <Text uppercase type="heading-md" color="white">
+                {heading}
+              </Text>
+              <Text type="heading-xs" color="white">
+                {subheading}
+              </Text>
+              {quote && (
+                <Quote
+                  quote={quote}
+                  author={author}
+                  publication={publication}
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+</div>
+<style>
+  .header {
+    position: relative;
+  }
+
+  .image-wrapper {
+    position: relative;
+  }
+  .background-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(24, 24, 35, 0.479);
+  }
+
+  .content-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--screen-900);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px var(--screen-900);
+  }
+
+  .heading-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .heading {
+    max-width: 600px;
+    text-align: right;
+  }
+
+  .header-image {
+    border-radius: 10px;
+  }
+</style>

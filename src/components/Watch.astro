@@ -1,0 +1,44 @@
+---
+import Text from "../components/Text.astro";
+import Section from "../layouts/Section.astro";
+---
+
+<section class="watch" id="watch">
+  <Text uppercase textAlign="center" color="white" type="heading-lg">Watch</Text
+  >
+  <div class="carousel">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/eoy5aCUsNic?si=K-1J8aZRCM1p26vU"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/iIxp2FT4qDY?si=NVk3YIgQHVrYQ4nw"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+  </div>
+</section>
+
+<style>
+  .watch {
+    padding: 2rem;
+    background-color: var(--primary-500);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .carousel {
+    display: flex;
+    gap: 1rem;
+  }
+</style>

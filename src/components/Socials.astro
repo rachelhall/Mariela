@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  direction?: "horizontal" | "vertical";
+}
+const { direction = "vertical" } = Astro.props;
+---
+
+<div class="socials">
+  <ul class:list={[{ horizontal: direction === "horizontal" }]}>
+    <li>
+      <a
+        href="https://www.instagram.com/mariela.band"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="mdi:instagram" />
+      </a>
+    </li>
+    <li>
+      <a
+        title="Instagram"
+        href="https://www.youtube.com/@marielaband4208"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="mdi:youtube" />
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://open.spotify.com/artist/0fOdB0OUb1fBfHf8V4N3Hy?si=8UjV-zBpQIWcWUYF27w3jA"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="mdi:spotify" />
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://soundcloud.com/mariela-band"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="mdi:soundcloud" />
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://music.apple.com/us/artist/mariela/1330323192"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="mdi:music-circle-outline" />
+      </a>
+    </li>
+  </ul>
+</div>
+<style>
+  .socials {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    margin: 5rem 0;
+  }
+
+  ul {
+    padding: 0 2rem;
+    list-style: none;
+    display: flex;
+
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  a {
+    color: unset;
+    display: block;
+  }
+
+  svg {
+    color: var(--primary-100);
+    font-size: 1.5rem;
+  }
+
+  .horizontal {
+    display: flex;
+    gap: 1rem;
+  }
+</style>

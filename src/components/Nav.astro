@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import wordmark from "../images/wordmark.png";
+---
+
+<nav>
+  <ul>
+    <li><a href="#listen">Music</a></li>
+    <li><a href="#shows">Shows</a></li>
+    <li><a href="#watch">Watch</a></li>
+    <li>
+      <a href="/">
+        <Image class="logo" src={wordmark} alt="Mariela" />
+      </a>
+    </li>
+    <li><a href="/lyrics">Lyrics</a></li>
+    <li><a href="/epk">EPK</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<style lang="scss">
+  nav {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    line-height: 100%;
+  }
+
+  li {
+    text-transform: uppercase;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  // a:after {
+  //   content: "";
+  //   position: absolute;
+  //   left: 50%;
+  //   bottom: -2px;
+  //   width: 0px;
+  //   height: 2px;
+  //   background: var(--primary-100);
+  //   transition: all 0.15s;
+  // }
+
+  // a:hover:after {
+  //   width: 100%;
+  //   left: 0;
+  // }
+
+  a {
+    text-decoration: none;
+    color: var(--primary-100);
+  }
+  a:hover {
+    color: var(--white);
+    transition: color ease-in-out 0.15s;
+  }
+
+  .logo {
+    height: 4rem;
+    width: auto;
+    transform: translateY(0.5rem);
+  }
+</style>

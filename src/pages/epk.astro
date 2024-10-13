@@ -1,0 +1,25 @@
+---
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import Moriah from "../images/moriah-web.jpg";
+import Bio from "../components/Bio.astro";
+import SocialMediaStats from "../components/SocialMediaStats.astro";
+import TourHistory from "../components/TourHistory.astro";
+---
+
+<Layout title="Mariela - EPK">
+  <main>
+    <div class="epk">
+      <Header
+        headerImage={Moriah}
+        heading="Moriah"
+        quote={`...the most gut-wrenchingly glorious refrain for a religiously traumatized queer kid-turned-adult.`}
+        author="Lindsay White"
+        publication="The San Diego Troubador"
+      />
+      <Bio />
+      <SocialMediaStats />
+      <TourHistory />
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,14 @@
+---
+interface Props {
+  id?: string;
+  variant: "primary" | "secondary" | "tertiary";
+}
+const { id, variant } = Astro.props;
+---
+
+<button id={id}><slot /></button>
+<style>
+  button {
+    background-color: unset;
+  }
+</style>

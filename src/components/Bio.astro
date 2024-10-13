@@ -1,0 +1,67 @@
+---
+import Text from "../components/Text.astro";
+---
+
+<div class="bio">
+  <div class="content">
+    <div class="version">
+      <Text uppercase color="primary-500" type="heading-sm">Very short bio</Text
+      >
+      <Text
+        >Mariela is an indie rock project formed in 2017 by producer, songwriter
+        and multi-instrumentalist, Rachel Hall who writes tunes characterized by
+        introspective melancholy lyrics packed in candy coated hooks so sweet
+        they’ll make your teeth hurt.</Text
+      >
+    </div>
+    <div class="version">
+      <Text uppercase color="primary-500" type="heading-sm">Short bio</Text>
+      <Text
+        >Rachel Hall is a singer-songwriter and producer who performs under the
+        name Mariela. Her original music is characterized by introspective
+        melancholy lyrics about personal discovery, and religious trauma
+        packaged in catchy melodies with big guitars and soaring synth hooks.</Text
+      >
+
+      <Text>
+        She’s currently releasing singles from her upcoming album that explores
+        the loss of her marriage and the way that self-actualization has put a
+        strain on her relationships with her family of origin. Her latest
+        single, Moriah, explores the similarities between the biblical story,
+        “The binding of Isaac on Mt. Moriah” to the way evangelical parents
+        relate to their queer children.</Text
+      >
+
+      <Text>
+        In addition to actively performing and releasing music as Mariela,
+        Rachel also produces for many artists in the San Diego music scene and
+        backs a number of artists as a keyboard, guitar, and bass player.</Text
+      >
+    </div>
+  </div>
+</div>
+
+<style>
+  .bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 4rem;
+  }
+
+  .version {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .content {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+</style>

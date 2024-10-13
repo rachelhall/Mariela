@@ -1,0 +1,33 @@
+---
+import Text from "./Text.astro";
+---
+
+<div class="shows">
+  <Text textAlign="center" uppercase type="heading-sm" color="white"
+    >Tour/Show History</Text
+  >
+  <div class="collection">
+    <Text color="white" uppercase bold type="heading-xs">Festivals</Text>
+    <ul>
+      <li>SheFest, 2024 — San Diego, CA</li>
+      <li>San Diego Pride, 2023 — San Diego, CA</li>
+      <li>Adams Ave Street Festival, 2023 — San Diego, CA</li>
+      <li>SheFest, 2023 — San Diego, CA</li>
+      <li>Black Potato Festival, 2019 — Clinton, NJ</li>
+      <li>Alpharetta Pop Festival, 2018, Atlanta, GA</li>
+    </ul>
+  </div>
+</div>
+<style>
+  .shows {
+    background-color: var(--primary-500);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .collection {
+  }
+</style>
