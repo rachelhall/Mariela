@@ -69,7 +69,7 @@ const { direction = "vertical" } = Astro.props;
     padding: 0 2rem;
     list-style: none;
     display: flex;
-
+    margin: 0;
     flex-direction: column;
     align-items: flex-end;
   }
@@ -85,6 +85,8 @@ const { direction = "vertical" } = Astro.props;
 
   .horizontal {
     display: flex;
+    flex-direction: row;
     gap: 1rem;
+    justify-content: center;
   }
 </style>
