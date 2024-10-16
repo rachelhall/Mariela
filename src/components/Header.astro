@@ -15,12 +15,12 @@ interface Props {
   publication?: string;
   page?: 'home' | 'epk'
 }
-const { heading, headerImage, subheading, quote, author, publication } =
+const { heading, headerImage,page, subheading, quote, author, publication } =
   Astro.props;
 ---
 
 <div class="header">
-  <Nav page="epk" />
+  <Nav page={page} />
   <div id="socials">
     <Socials  />
   </div>
