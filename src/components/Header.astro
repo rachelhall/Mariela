@@ -13,13 +13,14 @@ interface Props {
   quote?: string;
   author?: string;
   publication?: string;
+  page?: 'home' | 'epk'
 }
 const { heading, headerImage, subheading, quote, author, publication } =
   Astro.props;
 ---
 
 <div class="header">
-  <Nav />
+  <Nav page="epk" />
   <div id="socials">
     <Socials  />
   </div>

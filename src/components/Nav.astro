@@ -3,11 +3,31 @@ import { Image } from "astro:assets";
 import wordmark from "../images/wordmark.png";
 import "../styles/global.css";
 import Hamburger from "./Hamburger.astro";
+const { page } = Astro.props;
 ---
 
 <nav>
   <Hamburger />
-  <ul class="nav-links">
+  <ul class="nav-links">{page === 'epk'?
+  (
+  <li><a href="#listen">Music</a></li>
+    <div class="divider"></div>
+    <li><a href="#shows">Show History</a></li>
+    <div class="divider"></div>
+    <li><a href="#watch">Video</a></li>
+    <div class="divider"></div>
+    <li id="logo">
+      <a href="/">
+        <Image class="logo" src={wordmark} alt="Mariela" />
+      </a>
+    </li>
+    <li><a href="/lyrics">Lyrics</a></li>
+    <div class="divider"></div>
+    <li><a href="/epk">EPK</a></li>
+    <div class="divider"></div>
+    <li><a href="#contact">Contact</a></li>
+  ): (
+
     <li><a href="#listen">Music</a></li>
     <div class="divider"></div>
     <li><a href="#shows">Shows</a></li>
@@ -24,6 +44,7 @@ import Hamburger from "./Hamburger.astro";
     <li><a href="/epk">EPK</a></li>
     <div class="divider"></div>
     <li><a href="#contact">Contact</a></li>
+      )}
   </ul>
 </nav>
 

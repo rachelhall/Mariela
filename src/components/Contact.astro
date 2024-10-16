@@ -1,0 +1,24 @@
+---
+import Text from "../components/Text.astro";
+---
+
+<div class="contact" id="contact">
+  <Text uppercase color="primary-100" type="heading-sm" color="primary-100"
+    >Contact</Text
+  >
+  <a href="mailto:thebandmariela@gmail.com">
+    <Text color="primary-100">thebandmariela@gmail.com</Text>
+  </a>
+</div>
+<style>
+  .contact {
+    background-color: var(--primary-900);
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  a {
+    color: var(--primary-100);
+  }
+</style>

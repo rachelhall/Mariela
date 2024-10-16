@@ -7,12 +7,15 @@ import SocialMediaStats from "../components/SocialMediaStats.astro";
 import TourHistory from "../components/TourHistory.astro";
 import Watch from "../components/Watch.astro";
 import Press from "../components/Press.astro";
+import Listen from "../components/Listen.astro";
+import Contact from "../components/Contact.astro";
 ---
 
 <Layout title="Mariela - EPK">
   <main>
     <div class="epk">
       <Header
+        page="epk"
         headerImage={Moriah}
         heading="Moriah"
         quote={`...the most gut-wrenchingly glorious refrain for a religiously traumatized queer kid-turned-adult.`}
@@ -24,6 +27,8 @@ import Press from "../components/Press.astro";
       <Watch />
       <TourHistory />
       <Press />
+      <Listen />
+      <Contact />
     </div>
   </main>
 </Layout>
