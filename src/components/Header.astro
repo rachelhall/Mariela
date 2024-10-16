@@ -20,7 +20,9 @@ const { heading, headerImage, subheading, quote, author, publication } =
 
 <div class="header">
   <Nav />
-  <Socials />
+  <div id="socials">
+    <Socials  />
+  </div>
   <div class="image-wrapper">
     <div class="overlay"></div>
     <Image
@@ -124,4 +126,27 @@ const { heading, headerImage, subheading, quote, author, publication } =
   .header-image {
     border-radius: 10px;
   }
+
+  @media screen and (max-width: 636px) {
+    #socials {
+      display: none;
+    }
+
+    .heading-container {
+
+    }
+
+    .content {
+      padding: 1rem;
+      box-shadow: unset;
+      background-color: unset;
+    }
+
+    .content-wrapper {
+      padding: 0;
+    }
+
+    .header-image {
+      display: none;
+    }
 </style>

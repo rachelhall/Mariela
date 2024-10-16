@@ -1,0 +1,45 @@
+<div class="hamburger">
+  <span class="line"></span>
+  <span class="line"></span>
+  <span class="line"></span>
+</div>
+<script>
+  document.querySelector(".hamburger")?.addEventListener("click", () => {
+    document.querySelector(".nav-links")?.classList.toggle("expanded");
+    document.querySelector(".hamburger")?.classList.toggle("open");
+  });
+</script>
+<style>
+  .hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+    padding: 1rem;
+
+    span {
+      background-color: var(--primary-100);
+    }
+  }
+
+  .open {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    span {
+      background-color: var(--primary-900);
+    }
+  }
+
+  .hamburger .line {
+    display: block;
+    width: 40px;
+    height: 4px;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: 636px) {
+    .hamburger {
+      display: none;
+    }
+  }
+</style>

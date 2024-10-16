@@ -1,20 +1,28 @@
 ---
 import { Image } from "astro:assets";
 import wordmark from "../images/wordmark.png";
+import "../styles/global.css";
+import Hamburger from "./Hamburger.astro";
 ---
 
 <nav>
-  <ul>
+  <Hamburger />
+  <ul class="nav-links">
     <li><a href="#listen">Music</a></li>
+    <div class="divider"></div>
     <li><a href="#shows">Shows</a></li>
+    <div class="divider"></div>
     <li><a href="#watch">Watch</a></li>
-    <li>
+    <div class="divider"></div>
+    <li id="logo">
       <a href="/">
         <Image class="logo" src={wordmark} alt="Mariela" />
       </a>
     </li>
     <li><a href="/lyrics">Lyrics</a></li>
+    <div class="divider"></div>
     <li><a href="/epk">EPK</a></li>
+    <div class="divider"></div>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -30,6 +38,8 @@ import wordmark from "../images/wordmark.png";
     display: flex;
     justify-content: center;
     line-height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   li {
@@ -70,5 +80,42 @@ import wordmark from "../images/wordmark.png";
     height: 4rem;
     width: auto;
     transform: translateY(0.5rem);
+  }
+
+  .divider {
+    display: none;
+  }
+
+  @media screen and (max-width: 636px) {
+    #logo {
+      display: none;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    nav {
+      height: 100%;
+    }
+
+    .expanded {
+      display: flex;
+      background-color: var(--primary-100);
+      height: 100%;
+
+      a {
+        color: var(--primary-900);
+      }
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: var(--primary-900);
+      margin: 0;
+    }
+    li {
+    }
   }
 </style>

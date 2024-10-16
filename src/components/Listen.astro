@@ -24,7 +24,9 @@ import shefest from "../images/shefest.jpg";
     >
     </iframe> -->
   </div>
+
   <Image
+    id="shefest"
     class="shefest"
     src={shefest}
     alt="Mariela standing on a stage singing and playing her guitar."
@@ -55,5 +57,11 @@ import shefest from "../images/shefest.jpg";
     gap: 1rem;
     padding: 2rem;
     align-items: center;
+  }
+
+  @media screen and (max-width: 636px) {
+    #shefest {
+      display: none;
+    }
   }
 </style>

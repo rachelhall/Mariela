@@ -5,8 +5,7 @@ import Text from "../components/Text.astro";
 <div class="bio">
   <div class="content">
     <div class="version">
-      <Text uppercase color="primary-500" type="heading-sm">Very short bio</Text
-      >
+      <Text uppercase color="primary-500" type="heading-sm">Short bio</Text>
       <Text
         >Mariela is an indie rock project formed in 2017 by producer, songwriter
         and multi-instrumentalist, Rachel Hall who writes tunes characterized by
@@ -15,7 +14,7 @@ import Text from "../components/Text.astro";
       >
     </div>
     <div class="version">
-      <Text uppercase color="primary-500" type="heading-sm">Short bio</Text>
+      <Text uppercase color="primary-500" type="heading-sm">Bio</Text>
       <Text
         >Rachel Hall is a singer-songwriter and producer who performs under the
         name Mariela. Her original music is characterized by introspective
@@ -63,5 +62,15 @@ import Text from "../components/Text.astro";
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+  }
+
+  @media screen and (max-width: 636px) {
+    .bio {
+      padding: 1rem;
+    }
+
+    .content {
+      max-width: unset;
+    }
   }
 </style>
