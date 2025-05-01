@@ -6,12 +6,19 @@ import Text from "../components/Text.astro";
   <div class="content">
     <div class="version">
       <Text uppercase color="primary-500" type="heading-sm">Short bio</Text>
-      <Text
+      <!-- <div class="short-bio-container">
+        <img
+          class="short-bio-img"
+          height="200"
+          src="https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122689/RachelHall-122_sq20dp.jpg"
+        /> -->
+      <Text className="short-bio"
         >Mariela is an indie rock project formed in 2017 by producer, songwriter
         and multi-instrumentalist, Rachel Hall who writes tunes characterized by
         introspective melancholy lyrics packed in candy coated hooks so sweet
         they’ll make your teeth hurt.</Text
       >
+      <!-- </div> -->
     </div>
     <div class="version">
       <Text uppercase color="primary-500" type="heading-sm">Bio</Text>
@@ -47,6 +54,17 @@ import Text from "../components/Text.astro";
     align-items: center;
     gap: 1rem;
     padding: 4rem;
+  }
+
+  .short-bio-container {
+  }
+  .short-bio-img {
+    float: left;
+    margin: 1rem;
+  }
+  .short-bio {
+    width: 100px;
+    background-color: red;
   }
 
   .version {

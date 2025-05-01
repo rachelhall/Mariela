@@ -1,59 +1,153 @@
-export const lyrics = [{
+export const lyrics = [
+  {
     title: "Going Away",
     album: "Darkness in the Garden",
-    lyrics: [`
+    lyrics: [
+      `
 When we were younger in the thunder of the coming age
 Said our goodbyes in the pouring rain
 Hung up on a second thought
-Praying that we’re never caught`,`
+Praying that we’re never caught`,
+      `
 
 Quiet conversations with the ghost of the high life
 The reputation let me down in the midnight
 Back in that place again
 Dreaming of what might’ve been`,
 
-`If I make it through and wake up tomorrow
+      `If I make it through and wake up tomorrow
 Grab the future, come and catch it ‘cause it’s going away`,
 
-`I don’t want to hold on
+      `I don’t want to hold on
 No I don’t want to hold on, too tight
 Feels like I’m nearly gone
 Did we know it all along
 Yeah, we’re going away`,
 
-`The leaves had started changing it was gonna be a good one
+      `The leaves had started changing it was gonna be a good one
 But by November I was already done
 Can’t wait until the winter comes
 Then begging for the summer sun`,
 
-`If I make it through and wake up tomorrow
+      `If I make it through and wake up tomorrow
 Grab the future, come and catch it ‘cause it’s going away`,
 
-`I don’t want to hold on
+      `I don’t want to hold on
 No I don’t want to hold on, too tight
 Feels like I’m nearly gone
 Did we know it all along
 Yeah, we’re going away`,
 
-`Hear the sound getting louder and louder
+      `Hear the sound getting louder and louder
 Gather round, gotta catch it because it’s going away
 Look around have we found what we’re after`,
 
-`Hear the sound getting louder and louder
+      `Hear the sound getting louder and louder
 Gather round, gotta catch it because it’s going away
 Look around have we found what we’re after`,
 
-`I don’t want to hold on
+      `I don’t want to hold on
 No I don’t want to hold on, too tight
 Feels like I’m nearly gone
 Did we know it all along
 Yeah, we’re going away`,
 
-`I don’t want to hold on
+      `I don’t want to hold on
 No I don’t want to hold on, too tight
 Feels like I’m nearly gone
 Did we know it all along
-Yeah, we’re going away`]}]
+Yeah, we’re going away`,
+    ],
+  },
+];
+//   {
+//     title: "Moriah",
+//     album: "Moriah",
+//     lyrics: `I hear you calling my name
+// From the bottom of the stairs
+// But I’m tangled up in sissy’s clothes
+// That I know I shouldn’t wear
+// Yeah, you like me in short hair
+
+// You send me to school in my uniform
+// Studying the king who could calm the storm
+// Talk about miracles but what am I
+// If I’ve gotta hide
+// If I’ve gotta hide who I am
+
+// Take this child
+// Up to the mountain
+// Bind her hands and feet
+// To the pyre
+// Raise the knife
+// Your heart is pounding
+// Turn my head and cry
+// As we whisper goodbye
+
+// Because there’s no coming back
+// No, there’s no coming back
+// From Moriah
+// From Moriah
+// No, there’s no coming back
+// From Moriah
+// From Moriah
+
+// I washed my hair on Christmas Day
+// And I let it down to dry
+// On that 40 minute drive
+// Told me not to let the children see
+// As if a hair tie and some lies
+// Could protect their little eyes
+
+// You said I was knit together in my mother’s womb
+// Fearfully and wonderfully
+// But if that’s true
+// Why can’t you just love me
+// For the girl I am?
+// Because it’s who I am
+// To the Great I AM
+// But instead
+
+// You take this child
+// Up to the mountain
+// Bind her hands and feet
+// To the pyre
+// Raise the knife
+// Your heart is pounding
+// Turn my head and cry
+// As we whisper goodbye
+
+// Because there’s no coming back
+// No, there’s no coming back
+// From Moriah
+// From Moriah
+// No, there’s no coming back
+// From Moriah
+// From Moriah
+
+// You take this child
+// Up to the mountain
+// Bind her hands and feet
+// To the pyre
+// Raise the knife
+// Your heart is pounding
+// Turn my head and cry
+// As we whisper goodbye
+
+// Because there’s no coming back
+// No, there’s no coming back
+// From Moriah
+// From Moriah
+// No, there’s no coming back
+// From Moriah
+// From Moriah
+// Never Gonna Fall in Line Again
+// Drug me Up
+// Lay me down
+// I’m wide awake
+// Obsessed with what we might have found`,
+//   },
+// ];
 
 // Even If We Don’t Know
 // Renting this old house on the edge of town, I feel it
@@ -188,7 +282,6 @@ Yeah, we’re going away`]}]
 // Promise me we’ll always stay together
 // Young forever
 
-
 // We don’t know for sure
 // We don’t know for sure about tomorrow
 // So hold on tonight
@@ -207,7 +300,6 @@ Yeah, we’re going away`]}]
 // Don’t hide from me
 // Promise me we’ll always stay together
 // Young forever
-
 
 // We don’t know for sure
 // We don’t know for sure about tomorrow
@@ -476,7 +568,6 @@ Yeah, we’re going away`]}]
 // Look up the sky is falling
 // Down here we keep on dancing for the rain
 
-
 // Rosary, round my neck
 // Mary can you hear me now as I confess
 // My regrets
@@ -694,12 +785,11 @@ Yeah, we’re going away`]}]
 // Brandy
 
 // V1
-// We locked eyes like we knew each other
+// `We locked eyes like we knew each other
 // Somewhere in another life
 // A premonition undercover
 // Spelling us in the stars tonight
 
-// PC
 // Spinning off in outer space
 // Until I landed on your face
 // Smile caught me off guard
@@ -709,29 +799,21 @@ Yeah, we’re going away`]}]
 // Until it’s time to wake up
 // I forget, repeat, replace
 
-// CH
 // Oh Brandy, all I know is your name
 // But the fantasy is alive in my brain
 // I think I’m in danger, I think I’m in danger, my eyes are crazed
 // Because you’re just a stranger, you’re just a stranger that I want to taste
 
-// V2
 // We could try to control the fire
 // But the kindling is too damn dry
 // I’m casual, aloof, a liar
 // My hope’s already way to high
 
-// PC
-// CH
-
-// Bridge
 // Try to let me down easy
 // Try to let me down easy when you go
-// And you’ll go
+// And you’ll go`,
 
-// CH
-// Moriah
-// I hear you calling my name
+// `I hear you calling my name
 // From the bottom of the stairs
 // But I’m tangled up in sissy’s clothes
 // That I know I shouldn’t wear
@@ -813,7 +895,7 @@ Yeah, we’re going away`]}]
 // Drug me Up
 // Lay me down
 // I’m wide awake
-// Obsessed with what we might have found
+// Obsessed with what we might have found`
 
 // In my blood
 // Sweet serotonin flood

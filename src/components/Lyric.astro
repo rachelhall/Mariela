@@ -8,19 +8,21 @@ import Text from "./Text.astro";
 const { album, lyrics, title } = Astro.props;
 ---
 
-<div class="lyric">
-  <Text type="heading-md">{title}</Text>
-  <Text>{album}</Text>
-  <Text>{lyrics}</Text>
+<div class="lyric" id={title}>
+  <Text bold color="primary-100" type="heading-md">{title}</Text>
+  <Text bold color="primary-100">{album}</Text>
+  {lyrics.map((lyric) => <Text color="primary-100">{lyric}</Text>)}
 </div>
 <style>
   .lyric {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
     gap: 1rem;
-    padding: 2rem;
+    margin: 8rem;
+    padding: 8rem;
     background-color: var(--screen-900);
-    background-color: gray;
-    color: var(--primary-900);
   }
 </style>

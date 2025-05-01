@@ -1,5 +1,4 @@
 ---
-import Text from "../components/Text.astro";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import { lyrics } from "../data/lyrics";
@@ -9,18 +8,18 @@ import Lyric from "../components/Lyric.astro";
 <Layout title="Mariela - Lyrics">
   <main>
     <div class="lyrics">
-      <!-- <Header /> -->
-      <Text>Lyrics</Text>
-      <Text>Coming soon!</Text>
-      <!-- {
-        lyrics.map((lyric) => (
-          <Lyric
-            album={lyric.album}
-            lyrics={lyric.lyrics}
-            title={lyric.title}
-          />
-        ))
-      } -->
+      <Header page="lyrics" />
+      <div class="lyric-group">
+        {
+          lyrics.map((lyric) => (
+            <Lyric
+              album={lyric.album}
+              lyrics={lyric.lyrics}
+              title={lyric.title}
+            />
+          ))
+        }
+      </div>
     </div>
   </main>
 </Layout>
@@ -30,6 +29,18 @@ import Lyric from "../components/Lyric.astro";
   }
   .lyrics {
     height: 100%;
-    padding: 2rem;
+  }
+
+  .lyric-group {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
   }
 </style>

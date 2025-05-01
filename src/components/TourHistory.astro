@@ -8,6 +8,26 @@ import Text from "./Text.astro";
   >
   <div class="content">
     <div class="collection">
+      <Text color="white" uppercase bold type="heading-xs">Tours</Text>
+      <ul>
+        <li>
+          <strong
+            ><a
+              class="link"
+              href="https://www.instagram.com/p/C_vRf4iO_B7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+              target="_blank">No More Truama Tour</a
+            ></strong
+          > — National Tour with <a
+            class="link"
+            href="https://www.flamygrant.com/"
+            target="_blank"
+          >
+            Flamy Grant</a
+          >, 2024
+        </li>
+      </ul>
+    </div>
+    <div class="collection">
       <Text color="white" uppercase bold type="heading-xs">Festivals</Text>
       <ul>
         <li><strong>SheFest, 2024</strong> — San Diego, CA</li>
@@ -79,6 +99,11 @@ import Text from "./Text.astro";
   }
   li {
     font-weight: 100;
+  }
+
+  .link {
+    color: white;
+    margin: 0 2px 0 2px;
   }
 
   @media screen and (max-width: 636px) {
