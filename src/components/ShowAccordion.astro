@@ -1,0 +1,92 @@
+---
+const { citiesAndVenues } = Astro.props;
+---
+
+<div class="accordion">
+  {
+    Object.entries(citiesAndVenues).map(([city, venues], index) => (
+      <div class="accordion-item" data-index={index}>
+        <button class="accordion-trigger" aria-expanded="false">
+          <span>{city}</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M7 10l5 5 5-5z" />
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <ul>
+            {venues.map((venue) => (
+              <li>{venue}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const triggers = document.querySelectorAll(".accordion-trigger");
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const expanded = trigger.getAttribute("aria-expanded") === "true";
+        trigger.setAttribute("aria-expanded", !expanded);
+        trigger.classList.toggle("open");
+
+        const content = trigger.nextElementSibling;
+        if (!expanded) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .accordion-item + .accordion-item {
+    margin-top: 1rem;
+  }
+
+  .accordion-trigger {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .accordion-trigger .chevron {
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-trigger.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    padding-left: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+    color: #e0e0e0;
+  }
+</style>

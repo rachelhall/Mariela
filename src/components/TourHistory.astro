@@ -1,85 +1,152 @@
 ---
 import Text from "./Text.astro";
+
+const showData = {
+  tours: [
+    {
+      name: "No More Truama Tour",
+      year: 2024,
+      link: "https://www.instagram.com/p/C_vRf4iO_B7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      description: "National Tour with",
+      with: {
+        name: "Flamy Grant",
+        url: "https://www.flamygrant.com/",
+      },
+    },
+  ],
+  festivals: [
+    { name: "ArtWalk", year: 2025, location: "San Diego, CA" },
+    { name: "SheFest", year: 2024, location: "San Diego, CA" },
+    { name: "San Diego Pride", year: 2023, location: "San Diego, CA" },
+    {
+      name: "Adams Ave Street Festival",
+      year: 2023,
+      location: "San Diego, CA",
+    },
+    { name: "SheFest", year: 2023, location: "San Diego, CA" },
+    { name: "Black Potato Festival", year: 2019, location: "Clinton, NJ" },
+    { name: "Alpharetta Pop Festival", year: 2018, location: "Atlanta, GA" },
+  ],
+  citiesAndVenues: {
+    Nashville: [
+      "The East Room",
+      "The Underdog",
+      "The 5 Spot",
+      "The Basement",
+      "The End",
+      "The Cobra",
+      "DRKMTTR Collective",
+      "The Springwater",
+      "Cafe Coco",
+      "Kimbro's Pickin' Parlor",
+      "Rocketown",
+      "The Bowery Vault",
+      "The Highwatt",
+      "The Country",
+    ],
+    "San Diego": [
+      "The Belly Up",
+      "The Music Box",
+      "Soda Bar",
+      "The Black Cat",
+      "The Whistle Stop",
+      "The Ould Sod",
+      "Winstons",
+      "The Holding Company",
+    ],
+    "Los Angeles": ["Saint Rocke", "Hotel Cafe", "The Fox Den", "Bobby V's"],
+    "New York": ["C'Mon Everybody", "Pianos"],
+    Atlanta: ["Eddie's Attic", "The Masquerade"],
+    Cincinnati: ["Urban Artifact", "Northside Tavern"],
+    Birmingham: ["The Nick"],
+    Charlottesville: ["The Twisted Tea Bazaar"],
+    "Washington D.C.": ["The Electric Maid"],
+    Dallas: ["Ruins"],
+    Tulsa: ["The Colony"],
+    "Springfield, MO": ["The Riff"],
+    "St. Louis": ["Moshmellow"],
+    Chicago: ["Hideout"],
+    "South Bend": ["Stockroom East"],
+    "Grand Rapids": ["Fountain Street Church"],
+    "Maryville, TN": ["The Bird and the Book"],
+    Chattanooga: ["Barking Legs Theatre"],
+    "Charlotte, NC": ["Watershed Charlotte"],
+    Louisville: ["Odeon"],
+    "Florence, AL": ["116 E Mobile"],
+  },
+};
 ---
 
 <div class="shows" id="shows">
-  <Text textAlign="center" uppercase type="heading-sm" color="white"
-    >Tour/Show History</Text
-  >
+  <Text textAlign="center" uppercase type="heading-sm" color="white">
+    Tour/Show History
+  </Text>
+
   <div class="content">
-    <div class="collection">
-      <Text color="white" uppercase bold type="heading-xs">Tours</Text>
+    <!-- TOURS -->
+    <div class="card">
+      <Text color="white" uppercase bold type="heading-xs">🚌 Tours</Text>
       <ul>
-        <li>
-          <strong
-            ><a
-              class="link"
-              href="https://www.instagram.com/p/C_vRf4iO_B7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-              target="_blank">No More Truama Tour</a
-            ></strong
-          > — National Tour with <a
-            class="link"
-            href="https://www.flamygrant.com/"
-            target="_blank"
-          >
-            Flamy Grant</a
-          >, 2024
-        </li>
+        {
+          showData.tours.map((tour) => (
+            <li>
+              <strong>
+                <a class="link" href={tour.link} target="_blank">
+                  {tour.name}
+                </a>
+              </strong>{" "}
+              {tour.description}
+              <a class="link" href={tour.with.url} target="_blank">
+                {tour.with.name}
+              </a>
+              , {tour.year}
+            </li>
+          ))
+        }
       </ul>
     </div>
-    <div class="collection">
-      <Text color="white" uppercase bold type="heading-xs">Festivals</Text>
+
+    <!-- FESTIVALS -->
+    <div class="card">
+      <Text color="white" uppercase bold type="heading-xs">🎪 Festivals</Text>
       <ul>
-        <li><strong>SheFest, 2024</strong> — San Diego, CA</li>
-        <li><strong>San Diego Pride</strong>, 2023 — San Diego, CA</li>
-        <li>
-          <strong>Adams Ave Street Festival</strong>, 2023 — San Diego, CA
-        </li>
-        <li><strong>SheFest, 2023</strong> — San Diego, CA</li>
-        <li><strong>Black Potato Festival</strong>, 2019 — Clinton, NJ</li>
-        <li><strong>Alpharetta Pop Festival, 2018</strong> — Atlanta, GA</li>
+        {
+          showData.festivals.map((festival) => (
+            <li>
+              <strong>{festival.name}</strong>, {festival.year} —{" "}
+              {festival.location}
+            </li>
+          ))
+        }
       </ul>
     </div>
-    <div class="collection">
-      <Text color="white" uppercase bold type="heading-xs">Cities & Venues</Text
+
+    <!-- CITIES & VENUES -->
+    <div class="card">
+      <Text color="white" uppercase bold type="heading-xs"
+        >📍 Cities & Venues</Text
       >
-      <ul class="cities">
-        <li>
-          <strong>Nashville</strong> (The East Room, The 5 Spot, The Basement, The
-          End, The Cobra, DRKMTTR Collective, The Springwater, Cafe Coco, Kimbro's
-          Pickin' Parlor, Rocketown, The Bowery Vault The Highwatt, The Country,
-          T )
-        </li>
-        <li>
-          <strong>San Diego</strong> (The Belly Up, The Music Box, Soda Bar,The Black
-          Cat, The Whistle Stop, The Ould Sod, Winstons, The Holding Company)
-        </li>
-        <li>
-          <strong>Los Angeles</strong> (Saint Rocke, The Fox Den, Bobby V's)
-        </li>
-        <li><strong>New York</strong> (C'Mon Everybody, Pianos)</li>
-        <li><strong>Atlanta</strong>(Eddie's Attic, The Masquerade)</li>
-        <li><strong>Cincinnati</strong> (Urban Artifact, Northside Tavern)</li>
-        <li><strong>Birmingham</strong> (The Nick)</li>
-        <li><strong>Charlottesville</strong> (The Twisted Tea Bazaar)</li>
-        <li><strong>Washington D.C.</strong> (The Electric Maid)</li>
-        <li><strong>Dallas</strong> (Ruins)</li>
-        <li><strong>Tulsa</strong> (The Colony)</li>
-        <li><strong>Springfield, MO</strong> (The Riff)</li>
-        <li><strong>St. Louis</strong> (Moshmellow)</li>
-        <li><strong>Chicago</strong> (Hideout)</li>
-        <li><strong>South Bend</strong> (Stockroom East)</li>
-        <li><strong>Grand Rapids</strong> (Fountain Street Church)</li>
-        <li><strong>Maryville, TN</strong> (The Bird and the Book)</li>
-        <li><strong>Chattanooga</strong> (Barking Legs Theatre)</li>
-        <li><strong>Charlotte, NC</strong> (Watershed Charlotte)</li>
-        <li><strong>Louisville</strong> (Odeon)</li>
-        <li><strong>Florence, AL</strong> (116 E Mobile)</li>
-      </ul>
+      <div class="accordion">
+        {
+          Object.entries(showData.citiesAndVenues).map(([city, venues]) => (
+            <details>
+              <summary>
+                <strong>{city}</strong>
+              </summary>
+              <ul>
+                {venues.map((venue) => (
+                  <li>{venue}</li>
+                ))}
+              </ul>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </div>
 </div>
-<style>
+
+<style lang="scss">
   .shows {
     background-color: var(--primary-700);
     padding: 2rem;
@@ -91,19 +158,64 @@ import Text from "./Text.astro";
 
   .content {
     max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  .collection {
-  }
-  ul {
-  }
-  li {
-    font-weight: 100;
+  .card {
+    padding: 1rem;
+    background-color: var(--primary-500);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
   .link {
-    color: white;
-    margin: 0 2px 0 2px;
+    margin: 0 2px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color: var(--white);
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+  }
+
+  .accordion details {
+    margin-top: 0.5rem;
+    background: var(--primary-100);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    li {
+      color: var(--primary-700);
+    }
+  }
+
+  .accordion summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--primary-700);
+    margin-bottom: 0.5rem;
+  }
+
+  .accordion ul {
+    padding-left: 1rem;
+    margin-top: 0.5rem;
   }
 
   @media screen and (max-width: 636px) {

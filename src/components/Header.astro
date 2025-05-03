@@ -17,6 +17,16 @@ interface Props {
 }
 const { heading, headerImage,page, subheading, quote, author, publication } =
   Astro.props;
+
+  function optimizeCloudinaryUrl(url: string, options = "f_auto,q_auto") {
+  if (!url.includes("res.cloudinary.com") || !url.includes("/upload/"))
+    return url;
+
+  return url.replace("/upload/", `/upload/${options}/`);
+}
+const img = optimizeCloudinaryUrl(
+      "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122679/RachelHall-032_lonucu.jpg"
+    )
 ---
 
 <div class="header">
@@ -26,9 +36,9 @@ const { heading, headerImage,page, subheading, quote, author, publication } =
   </div>
   <div class="image-wrapper">
     <div class="overlay"></div>
-    <Image
+    <img
       class="background-image"
-      src={marielaSitting}
+      src={img}
       alt="Mariela sitting on a gray backdrop wearing a sequin gold and black leopard print top and a black leather skirt."
     />
   </div>
