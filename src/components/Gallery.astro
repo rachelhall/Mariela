@@ -1,6 +1,4 @@
 ---
-import { getImage } from "astro:assets";
-
 const images = [
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122679/RachelHall-032_lonucu.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122689/RachelHall-121_h2jv9c.jpg",
@@ -16,15 +14,30 @@ const images = [
     {
       images.map((url) => (
         <div class="image-container">
-          <a href={url} target="_blank" rel="noopener noreferrer">
-            <img
-              src={url}
-              alt=""
-              width="auto"
-              height="600"
-              loading="lazy"
-              class="shimmer"
-            />
+          <img src={url} alt="" height="600" loading="lazy" class="shimmer" />
+          <a
+            class="download-button"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            aria-label="Download image"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M7.5 12l4.5 4.5m0 0l4.5-4.5m-4.5 4.5V3"
+              />
+            </svg>
+            <span class="tooltip">Download</span>
           </a>
         </div>
       ))
@@ -36,7 +49,6 @@ const images = [
   .gallery {
     width: 100%;
     overflow-x: auto;
-    padding: 0;
   }
 
   .scroll-container {
@@ -49,6 +61,7 @@ const images = [
   .image-container {
     flex: 0 0 auto;
     scroll-snap-align: start;
+    position: relative;
   }
 
   .image-container img {
@@ -65,7 +78,6 @@ const images = [
     position: relative;
     overflow: hidden;
   }
-
   .shimmer::after {
     content: "";
     position: absolute;
@@ -81,7 +93,6 @@ const images = [
     );
     animation: shimmer 1.5s infinite;
   }
-
   @keyframes shimmer {
     0% {
       transform: translateX(0);
@@ -91,8 +102,71 @@ const images = [
     }
   }
 
-  a {
-    display: block;
-    line-height: 0;
+  .download-button {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background 0.2s,
+      transform 0.2s;
+    cursor: pointer;
+  }
+
+  .download-button:hover {
+    background: white;
+    transform: scale(1.1);
+  }
+
+  .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .tooltip {
+    position: absolute;
+    bottom: 130%;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #333;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  .download-button:hover .tooltip {
+    opacity: 1;
+  }
+
+  /* 🌐 Mobile styles */
+  @media (max-width: 768px) {
+    .scroll-container {
+      flex-direction: column;
+      align-items: center;
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+
+    .image-container img {
+      max-height: 250px;
+      width: 100vw;
+    }
+
+    .download-button {
+      bottom: 0.5rem;
+      right: 0.5rem;
+    }
   }
 </style>
