@@ -1,5 +1,5 @@
 ---
-const images = [
+const rawImages = [
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122679/RachelHall-032_lonucu.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122689/RachelHall-121_h2jv9c.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122694/RachelHall-141_w3hy6q.jpg",
@@ -7,6 +7,8 @@ const images = [
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122680/RachelHall-065_d4gsos.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122680/RachelHall-068_ionsg0.jpg",
 ];
+
+const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
 ---
 
 <div class="gallery">
