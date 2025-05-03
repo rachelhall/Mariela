@@ -6,7 +6,7 @@ import Text from "../components/Text.astro";
   <Text uppercase type="heading-sm" color="white"
     >Social Media & Music Links</Text
   >
-  <ul>
+  <ul class="social-links">
     <li>
       <a
         href="https://www.instagram.com/mariela.band"
@@ -65,6 +65,11 @@ import Text from "../components/Text.astro";
     gap: 1rem;
   }
 
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
   ul {
     list-style: none;
   }
@@ -88,6 +93,9 @@ import Text from "../components/Text.astro";
   @media screen and (max-width: 636px) {
     .social-media-stats {
       padding: 1rem;
+    }
+    .social-links {
+      flex-direction: column;
     }
   }
 </style>

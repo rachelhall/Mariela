@@ -1,0 +1,98 @@
+---
+import { getImage } from "astro:assets";
+
+const images = [
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122679/RachelHall-032_lonucu.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122689/RachelHall-121_h2jv9c.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122694/RachelHall-141_w3hy6q.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122686/RachelHall-070_v2elw9.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122680/RachelHall-065_d4gsos.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122680/RachelHall-068_ionsg0.jpg",
+];
+---
+
+<div class="gallery">
+  <div class="scroll-container">
+    {
+      images.map((url) => (
+        <div class="image-container">
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <img
+              src={url}
+              alt=""
+              width="auto"
+              height="600"
+              loading="lazy"
+              class="shimmer"
+            />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .gallery {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0;
+  }
+
+  .scroll-container {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .image-container {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .image-container img {
+    display: block;
+    max-height: 600px;
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    background-color: #eee;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150px;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+</style>
