@@ -1,4 +1,11 @@
 ---
+function optimizeCloudinaryUrl(url: string, options = "f_auto,q_auto") {
+  if (!url.includes("res.cloudinary.com") || !url.includes("/upload/"))
+    return url;
+
+  return url.replace("/upload/", `/upload/${options}/`);
+}
+
 const rawImages = [
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122679/RachelHall-032_lonucu.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122689/RachelHall-121_h2jv9c.jpg",
