@@ -4,6 +4,7 @@ import wordmark from "../images/wordmark.png";
 import "../styles/global.css";
 import Hamburger from "./Hamburger.astro";
 const { page } = Astro.props;
+const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v1765410647/Mariela_Logo_dpwjbj.png'
 ---
 
 <nav>
@@ -18,7 +19,7 @@ const { page } = Astro.props;
     <div class="divider"></div>
     <li id="logo">
       <a href="/">
-        <Image class="logo" src={wordmark} alt="Mariela" />
+        <img class="logo" src={underglowLogo} alt="Mariela" />
       </a>
     </li>
     <li><a href="/lyrics">Lyrics</a></li>
@@ -35,7 +36,7 @@ const { page } = Astro.props;
     <div class="divider"></div>
     <li id="logo">
       <a href="/">
-        <Image class="logo" src={wordmark} alt="Mariela" />
+             <img class="logo" src={underglowLogo} alt="Mariela" />
       </a>
     </li>
     <li><a href="/lyrics">Lyrics</a></li>

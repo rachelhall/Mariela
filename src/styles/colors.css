@@ -1,10 +1,21 @@
 :root {
-    --white: #e3ebf2;
-    --primary-100: #b9d6f2ff;
-    --primary-300: #006daaff;
-    --primary-500: #0353a4ff;
-    --primary-700: #003559ff;
-    --primary-900: #061a40ff;
+  /* Warm neutrals inspired by the lighting + skin tones */
+  --white: #faf5f2; /* soft warm off-white */
+  --neutral-100: #f0e7e3; /* pale warm beige */
+  --neutral-300: #d4c4bd; /* muted taupe */
+  --neutral-700: #4a3f3d; /* deep warm brown-gray (great for text) */
+  --neutral-900: #1a1616; /* near-black with a warm undertone */
 
-    --screen-900:rgba(6, 26, 64, .5)
+  /* BRAND (Mariela red) */
+  --primary-500: #e0453a; /* your album logo color */
+  --primary-600: #c53d35; /* slightly deeper for hover states */
+  --primary-700: #9e3029; /* deeper still for active/pressed */
+
+  /* Muted complementary color (a soft desaturated teal) */
+  --secondary-500: #3a6f73;
+  --secondary-700: #26494c;
+
+  /* Overlays */
+  --screen-900: rgba(26, 22, 22, 0.55); /* warm shadow overlay */
 }
+/* --screen-900:rgba(6, 26, 64, .5) */

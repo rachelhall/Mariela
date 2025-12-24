@@ -10,6 +10,78 @@ import Press from "../components/Press.astro";
 import Listen from "../components/Listen.astro";
 import Contact from "../components/Contact.astro";
 import Gallery from "../components/Gallery.astro";
+import Player from "../components/Player.astro";
+import album from "../data/album.json";
+
+const CLOUDINARY_FOLDER_PATH = "44k24"; // update to your folder
+
+const CLOUDINARY_CLOUD_NAME = import.meta.env.CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_API_KEY = import.meta.env.CLOUDINARY_API_KEY;
+const CLOUDINARY_API_SECRET = import.meta.env.CLOUDINARY_API_SECRET;
+
+type CloudinaryResource = { secure_url?: string };
+
+const fetchCloudinaryUrls = async () => {
+  console.log("fetching...");
+  if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_API_KEY || !CLOUDINARY_API_SECRET) {
+    console.warn(
+      "Cloudinary env vars missing. Skipping Cloudinary Search on EPK page."
+    );
+    return [];
+  }
+
+  const urls: string[] = [];
+  const searchUrl = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/resources/search`;
+  const expression = `folder="${CLOUDINARY_FOLDER_PATH}"`;
+  let next_cursor: string | undefined;
+
+  try {
+    do {
+      const res = await fetch(searchUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Basic ${Buffer.from(`${CLOUDINARY_API_KEY}:${CLOUDINARY_API_SECRET}`).toString("base64")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          expression,
+          max_results: 500,
+          ...(next_cursor ? { next_cursor } : {}),
+        }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        console.error("Cloudinary search error:", res.status, text);
+        break;
+      }
+
+      const data = (await res.json()) as {
+        resources?: CloudinaryResource[];
+        next_cursor?: string;
+      };
+
+      const batch =
+        data.resources
+          ?.map((asset) => asset.secure_url)
+          .filter((url): url is string => Boolean(url)) ?? [];
+      urls.push(...batch);
+      next_cursor = data.next_cursor;
+    } while (next_cursor);
+
+    console.log({
+      folder: CLOUDINARY_FOLDER_PATH,
+      count: urls.length,
+      urls,
+    });
+  } catch (error) {
+    console.error("Cloudinary search failed:", error);
+  }
+
+  return urls;
+};
+
+await fetchCloudinaryUrls();
 ---
 
 <Layout title="Mariela - EPK">
@@ -18,20 +90,29 @@ import Gallery from "../components/Gallery.astro";
       <Header
         page="epk"
         headerImage={Moriah}
-        heading="Moriah"
-        quote={`...the most gut-wrenchingly glorious refrain for a religiously traumatized queer kid-turned-adult.`}
-        author="Lindsay White"
+        heading="The Underglow"
+        quote={`...is a bright, shimmery pop explosion. But don’t worry, this isn’t sugary, bubblegum pop. This is pop that’s been around the block and has memorized its way from the therapist’s office to the dance floor.`}
+        author="Lizzie Wann"
         publication="The San Diego Troubadour"
       />
+      <Player album={album} />
+      <Listen />
       <Contact />
       <Gallery />
       <Bio />
-      <SocialMediaStats />
+      <!-- <SocialMediaStats /> -->
       <Watch />
       <Press />
-      <Listen />
+
       <TourHistory />
       <Contact />
     </div>
   </main>
 </Layout>
+<style>
+  .epk {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

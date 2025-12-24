@@ -1,0 +1,316 @@
+---
+import TrackPlayer from "./TrackPlayer/TrackPlayer.tsx";
+
+interface Track {
+  track_number?: number | null;
+  slug?: string;
+  title: string;
+  url: string;
+  duration?: number | null;
+  album: string;
+  artist: string;
+  cover_art: string;
+  producer?: string | null;
+  writer?: string | null;
+  credits?: string[];
+  asset_id: string;
+}
+
+interface Album {
+  album: string;
+  artist: string;
+  cover_art: string;
+  tracks: Track[];
+}
+
+interface Props {
+  album: Album;
+}
+
+const { album } = Astro.props;
+const totalTracks = album.tracks?.length ?? 0;
+---
+
+<section class="album-section">
+  <header class="album-section__hero">
+    <div class="album-section__cover-wrap">
+      <img
+        src={album.cover_art}
+        alt={`${album.album} cover art`}
+        class="album-section__cover"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="album-section__meta">
+      <p class="album-section__eyebrow">Album</p>
+      <h2 class="album-section__title">{album.album}</h2>
+      <h3 class="album-section__artist">{album.artist}</h3>
+      <p class="album-section__summary">
+        {totalTracks} track{totalTracks === 1 ? "" : "s"}
+      </p>
+    </div>
+  </header>
+
+  <ol class="album-section__tracks">
+    {
+      album.tracks.map((track) => (
+        <li class="album-section__track">
+          <header class="album-section__track-header">
+            <span class="album-section__track-number">
+              {track.track_number ?? "–"}.
+            </span>
+
+            <div class="album-section__track-main">
+              <strong class="album-section__track-title">{track.title}</strong>
+              {/* <small class="album-section__track-meta">
+                {track.writer} · {track.producer}
+              </small> */}
+            </div>
+          </header>
+
+          <TrackPlayer client:load url={track.url} title={track.title} />
+
+          {/* {track.credits && track.credits.length > 0 && (
+            <ul class="album-section__track-credits">
+              {track.credits.map((credit) => (
+                <li>{credit}</li>
+              ))}
+            </ul>
+          )} */}
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .album-section {
+    margin-block: 3rem;
+    padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+    border-radius: 1.5rem;
+    background: radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.04),
+        transparent
+      ),
+      rgba(10, 10, 16, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(14px);
+    margin: auto;
+  }
+
+  .album-section__hero {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .album-section__cover-wrap {
+    max-width: 260px;
+  }
+
+  .album-section__cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow:
+      0 12px 35px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  .album-section__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .album-section__eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .album-section__title {
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .album-section__artist {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.82;
+    font-weight: 500;
+  }
+
+  .album-section__summary {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  .album-section__tracks {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .album-section__track {
+    padding-block: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .album-section__track:last-child {
+    border-bottom: none;
+  }
+
+  .album-section__track-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .album-section__track-number {
+    width: 1.75rem;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  .album-section__track-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .album-section__track-title {
+    display: block;
+    font-size: 0.98rem;
+  }
+
+  .album-section__track-meta {
+    display: block;
+    font-size: 0.78rem;
+    opacity: 0.7;
+    margin-top: 0.15rem;
+  }
+
+  .album-section__track-duration {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .album-section__track-credits {
+    margin: 0.5rem 0 0;
+    padding-left: 1.75rem;
+    list-style: disc;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  .album-section__track-credits li + li {
+    margin-top: 0.1rem;
+  }
+
+  /* TrackPlayer styles (scoped here so you don’t have to hunt) */
+
+  .track-player {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .track-player__button {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 999px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition:
+      background 120ms ease-out,
+      transform 120ms ease-out,
+      box-shadow 120ms ease-out,
+      border-color 120ms ease-out;
+  }
+
+  .track-player__button:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+    transform: translateY(-0.5px);
+  }
+
+  .track-player__button:active {
+    transform: translateY(0.5px);
+    box-shadow: none;
+  }
+
+  .track-player__button:disabled {
+    opacity: 0.5;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  .track-player__progress {
+    flex: 1;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .track-player__progress-fill {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.5)
+    );
+    transition: width 120ms linear;
+  }
+
+  /* Layout tweaks on larger screens */
+
+  @media (min-width: 720px) {
+    .album-section__hero {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .album-section__cover-wrap {
+      flex: 0 0 220px;
+    }
+
+    .album-section__meta {
+      padding-left: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1040px) {
+    .album-section {
+      padding-inline: 2.5rem;
+    }
+
+    .album-section__hero {
+      margin-bottom: 2.4rem;
+    }
+  }
+</style>

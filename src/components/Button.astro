@@ -3,7 +3,7 @@ interface Props {
   id?: string;
   variant: "primary" | "secondary" | "tertiary";
 }
-const { id, variant } = Astro.props;
+const { id } = Astro.props;
 ---
 
 <button id={id}><slot /></button>
