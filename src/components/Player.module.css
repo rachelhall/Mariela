@@ -1,19 +1,3 @@
-.albumSection {
-  margin-block: 3rem;
-  padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
-  border-radius: 1.5rem;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent),
-    rgba(10, 10, 16, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(14px);
-  margin: auto;
-  color: white;
-}
-
 .hero {
   display: flex;
   flex-direction: column;
@@ -174,51 +158,50 @@
   transform: scale(1);
 }
 
-.compact {
+.compactCard {
   margin-block: 1rem;
   padding: 1.25rem 1.5rem;
-  gap: 1rem;
   border-radius: 1rem;
 }
 
-.compact .hero {
+.heroCompact {
   flex-direction: row;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.25rem;
 }
 
-.compact .coverWrap {
+.coverWrapCompact {
   flex: 0 0 140px;
   max-width: 140px;
 }
 
-.compact .title {
+.titleCompact {
   font-size: 1.2rem;
 }
 
-.compact .artist,
-.compact .summary {
+.artistCompact,
+.summaryCompact {
   font-size: 0.85rem;
 }
 
-.compact .tracks {
+.tracksCompact {
   margin-top: 0.75rem;
 }
 
-.compact .track {
+.trackCompact {
   padding-block: 0.5rem;
 }
 
-.compact .trackRow {
+.trackRowCompact {
   gap: 0.5rem;
 }
 
-.compact .trackTitle {
+.trackTitleCompact {
   font-size: 0.9rem;
 }
 
-.compact .trackButton {
+.trackButtonCompact {
   width: 2.1rem;
   height: 2.1rem;
 }
@@ -255,10 +238,6 @@
 }
 
 @media (min-width: 1040px) {
-  .albumSection {
-    padding-inline: 2.5rem;
-  }
-
   .hero {
     margin-bottom: 2.4rem;
   }

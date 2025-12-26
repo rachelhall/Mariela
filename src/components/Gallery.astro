@@ -1,4 +1,6 @@
 ---
+import Text from "../components/Text.astro";
+
 function optimizeCloudinaryUrl(url: string, options = "f_auto,q_auto") {
   if (!url.includes("res.cloudinary.com") || !url.includes("/upload/"))
     return url;
@@ -18,7 +20,8 @@ const rawImages = [
 const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
 ---
 
-<div class="gallery">
+<section class="gallery">
+  <!-- <Text color="primary-500" type="heading-md" uppercase>Photos</Text> -->
   <div class="scroll-container">
     {
       images.map((url) => (
@@ -52,25 +55,37 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
       ))
     }
   </div>
-</div>
+</section>
 
 <style>
   .gallery {
     width: 100%;
     overflow-x: auto;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 4rem 0;
   }
 
   .scroll-container {
     display: flex;
     scroll-snap-type: x mandatory;
     overflow-x: auto;
+    gap: 1rem;
     -webkit-overflow-scrolling: touch;
   }
 
   .image-container {
     flex: 0 0 auto;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .spacer {
+    height: 100%;
+    width: 2rem;
   }
 
   .image-container img {

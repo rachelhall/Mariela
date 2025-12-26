@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Player.module.css";
 import GlobalTransport from "./GlobalTransport";
+import CardShell from "./CardShell";
 
 interface Track {
   track_number?: number | null;
@@ -48,11 +49,8 @@ const formatTime = (seconds?: number | null) => {
 
 const Player: React.FC<Props> = ({ album, compact = false }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const progressRef = useRef<HTMLDivElement | null>(null);
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isScrubbing, setIsScrubbing] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
@@ -111,32 +109,6 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
     setCurrentTime(newTime);
   };
 
-  const handleProgressClick = (clientX: number) => {
-    const bar = progressRef.current;
-    if (!bar) return;
-    const rect = bar.getBoundingClientRect();
-    const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-    seekToRatio(ratio);
-  };
-
-  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-    setIsScrubbing(true);
-    handleProgressClick(event.clientX);
-
-    const handleMove = (moveEvent: MouseEvent) => {
-      handleProgressClick(moveEvent.clientX);
-    };
-    const handleUp = (upEvent: MouseEvent) => {
-      setIsScrubbing(false);
-      handleProgressClick(upEvent.clientX);
-      window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("mouseup", handleUp);
-    };
-
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("mouseup", handleUp);
-  };
-
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -147,9 +119,7 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
       }
     };
     const handleTimeUpdate = () => {
-      if (!isScrubbing) {
-        setCurrentTime(audio.currentTime);
-      }
+      setCurrentTime(audio.currentTime);
     };
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
@@ -172,7 +142,7 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
       audio.removeEventListener("ended", handleEnded);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isScrubbing, currentIndex, totalTracks]);
+  }, [currentIndex, totalTracks]);
 
   useEffect(() => {
     if (tracks.length > 0) {
@@ -184,12 +154,21 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
   const progressRatio =
     duration > 0 ? Math.min(1, Math.max(0, currentTime / duration)) : 0;
 
+  const heroClass = `${styles.hero} ${compact ? styles.heroCompact : ""}`;
+  const coverWrapClass = `${styles.coverWrap} ${compact ? styles.coverWrapCompact : ""}`;
+  const titleClass = `${styles.title} ${compact ? styles.titleCompact : ""}`;
+  const artistClass = `${styles.artist} ${compact ? styles.artistCompact : ""}`;
+  const summaryClass = `${styles.summary} ${compact ? styles.summaryCompact : ""}`;
+  const tracksClass = `${styles.tracks} ${compact ? styles.tracksCompact : ""}`;
+  const trackClass = `${styles.track} ${compact ? styles.trackCompact : ""}`;
+  const trackRowClass = `${styles.trackRow} ${compact ? styles.trackRowCompact : ""}`;
+  const trackTitleClass = `${styles.trackTitle} ${compact ? styles.trackTitleCompact : ""}`;
+  const trackButtonClass = `${styles.trackButton} ${compact ? styles.trackButtonCompact : ""}`;
+
   return (
-    <section
-      className={`${styles.albumSection} ${compact ? styles.compact : ""}`}
-    >
-      <header className={styles.hero}>
-        <div className={styles.coverWrap}>
+    <CardShell title={album.album} className={compact ? styles.compactCard : ""}>
+      <header className={heroClass}>
+        <div className={coverWrapClass}>
           <img
             src={album.cover_art}
             alt={`${album.album} cover art`}
@@ -200,9 +179,9 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
 
         <div className={styles.meta}>
           <p className={styles.eyebrow}>Album</p>
-          <h2 className={styles.title}>{album.album}</h2>
-          <h3 className={styles.artist}>{album.artist}</h3>
-          <p className={styles.summary}>
+          <h2 className={titleClass}>{album.album}</h2>
+          <h3 className={artistClass}>{album.artist}</h3>
+          <p className={summaryClass}>
             {totalTracks} track{totalTracks === 1 ? "" : "s"}
           </p>
         </div>
@@ -222,19 +201,19 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
         />
       </div>
 
-      <ol className={styles.tracks}>
+      <ol className={tracksClass}>
         {tracks.map((track, index) => {
           const isActive = index === currentIndex;
           const isTrackPlaying = isActive && isPlaying;
           return (
             <li
               key={track.slug ?? track.title ?? index}
-              className={`${styles.track} ${isActive ? styles.activeTrack : ""}`}
+              className={`${trackClass} ${isActive ? styles.activeTrack : ""}`}
               onClick={() => loadTrack(index, true)}
             >
-              <div className={styles.trackRow}>
+              <div className={trackRowClass}>
                 <button
-                  className={`${styles.trackButton} ${isTrackPlaying ? styles.playingButton : ""}`}
+                  className={`${trackButtonClass} ${isTrackPlaying ? styles.playingButton : ""}`}
                   onClick={(event) => {
                     event.stopPropagation();
                     if (isActive) {
@@ -254,7 +233,7 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
                 </button>
 
                 <div className={styles.trackMain}>
-                  <strong className={styles.trackTitle}>{track.title}</strong>
+                  <strong className={trackTitleClass}>{track.title}</strong>
                 </div>
                 <div className={styles.trackDuration}>
                   {formatDuration(track.duration)}
@@ -266,7 +245,7 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
       </ol>
 
       <audio ref={audioRef} preload="metadata" crossOrigin="anonymous" />
-    </section>
+    </CardShell>
   );
 };
 

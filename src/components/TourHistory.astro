@@ -1,4 +1,5 @@
 ---
+import CardShell from "./CardShell";
 import Text from "./Text.astro";
 
 const showData = {
@@ -15,6 +16,7 @@ const showData = {
     },
   ],
   festivals: [
+    { name: "San Diego Pride", year: 2025, location: "San Diego, CA" },
     { name: "ArtWalk", year: 2025, location: "San Diego, CA" },
     { name: "SheFest", year: 2024, location: "San Diego, CA" },
     { name: "San Diego Pride", year: 2023, location: "San Diego, CA" },
@@ -77,15 +79,14 @@ const showData = {
 };
 ---
 
-<div class="shows" id="shows">
-  <Text textAlign="center" uppercase type="heading-sm" color="white">
+<section class="shows" id="shows">
+  <Text textAlign="center" uppercase type="heading-md" color="primary-900">
     Tour/Show History
   </Text>
 
   <div class="content">
     <!-- TOURS -->
-    <div class="card">
-      <Text color="white" uppercase bold type="heading-xs">🚌 Tours</Text>
+    <CardShell title="Tours">
       <ul>
         {
           showData.tours.map((tour) => (
@@ -104,11 +105,10 @@ const showData = {
           ))
         }
       </ul>
-    </div>
+    </CardShell>
 
     <!-- FESTIVALS -->
-    <div class="card">
-      <Text color="white" uppercase bold type="heading-xs">🎪 Festivals</Text>
+    <CardShell title="Festivals">
       <ul>
         {
           showData.festivals.map((festival) => (
@@ -119,13 +119,10 @@ const showData = {
           ))
         }
       </ul>
-    </div>
+    </CardShell>
 
     <!-- CITIES & VENUES -->
-    <div class="card">
-      <Text color="white" uppercase bold type="heading-xs"
-        >📍 Cities & Venues</Text
-      >
+    <CardShell title="Cities + Venues">
       <div class="accordion">
         {
           Object.entries(showData.citiesAndVenues).map(([city, venues]) => (
@@ -142,36 +139,26 @@ const showData = {
           ))
         }
       </div>
-    </div>
+    </CardShell>
   </div>
-</div>
+</section>
 
 <style lang="scss">
   .shows {
-    background-color: var(--neutral-100);
-    padding: 2rem;
+    padding: 3rem clamp(1.5rem, 4vw, 3rem);
     display: flex;
     flex-direction: column;
     gap: 2rem;
     align-items: center;
+    margin-block: 2rem;
+    background-color: var(--white);
   }
 
   .content {
-    max-width: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .card {
-    padding: 1rem;
-    background-color: var(--neutral-900);
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    width: min(1100px, 100%);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
   }
 
   .link {
@@ -182,45 +169,52 @@ const showData = {
   }
 
   ul {
-    list-style: disc;
+    list-style: none;
     padding-left: 1.5rem;
     margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
   }
 
   li {
     font-weight: 400;
-    margin-bottom: 0.25rem;
+    position: relative;
+    color: var(--neutral-100);
   }
 
   .accordion details {
     margin-top: 0.5rem;
-    background: var(--primary-100);
+    background: rgba(255, 255, 255, 0.04);
     padding: 0.75rem;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     cursor: pointer;
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    li {
-      color: var(--neutral-100);
-    }
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+      background 120ms ease,
+      transform 120ms ease;
+  }
+
+  .accordion details:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateY(-1px);
   }
 
   .accordion summary {
     cursor: pointer;
     font-weight: bold;
-    color: var(--neutral-100);
-    margin-bottom: 0.5rem;
+    color: var(--white);
   }
 
   .accordion ul {
     padding-left: 1rem;
     margin-top: 0.5rem;
+    color: var(--neutral-100);
   }
 
   @media screen and (max-width: 636px) {
-    .content {
-      max-width: unset;
+    .shows {
+      padding: 2rem 1.25rem;
     }
   }
 </style>
