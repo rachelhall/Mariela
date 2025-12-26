@@ -5,6 +5,8 @@ import { Play, Pause } from "lucide-react";
 interface TrackPlayerProps {
   url: string;
   title: string;
+  trackNumber?: number | string | null;
+  id?: string;
 }
 
 const formatTime = (seconds: number): string => {
@@ -15,9 +17,14 @@ const formatTime = (seconds: number): string => {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 };
 
-const TrackPlayer: React.FC<TrackPlayerProps> = ({ url }) => {
+const TrackPlayer: React.FC<TrackPlayerProps> = ({
+  url,
+  trackNumber,
+  id,
+}) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const progressBarRef = useRef<HTMLDivElement | null>(null);
+  const playerId = id ?? url;
 
   const [isReady, setIsReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -32,11 +39,19 @@ const TrackPlayer: React.FC<TrackPlayerProps> = ({ url }) => {
   const displayTime =
     isScrubbing && duration ? scrubProgress * duration : currentTime;
 
+  const broadcastPlay = () => {
+    if (typeof window === "undefined") return;
+    window.dispatchEvent(
+      new CustomEvent("trackplayer:play", { detail: { id: playerId } })
+    );
+  };
+
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (!isReady) setIsReady(true);
     if (audio.paused) {
+      broadcastPlay();
       audio.play().catch((err) => console.error("Audio play error", err));
     } else {
       audio.pause();
@@ -85,6 +100,7 @@ const TrackPlayer: React.FC<TrackPlayerProps> = ({ url }) => {
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("ended", handleEnded);
+    audio.addEventListener("play", broadcastPlay);
 
     return () => {
       audio.removeEventListener("loadedmetadata", markReady);
@@ -94,8 +110,26 @@ const TrackPlayer: React.FC<TrackPlayerProps> = ({ url }) => {
       audio.removeEventListener("pause", handlePause);
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("ended", handleEnded);
+      audio.removeEventListener("play", broadcastPlay);
     };
   }, [isScrubbing]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleExternalPlay = (event: Event) => {
+      const detail = (event as CustomEvent<{ id?: string }>).detail;
+      if (!detail) return;
+      if (detail.id === playerId) return;
+      const audio = audioRef.current;
+      if (audio && !audio.paused) {
+        audio.pause();
+      }
+    };
+
+    window.addEventListener("trackplayer:play", handleExternalPlay);
+    return () =>
+      window.removeEventListener("trackplayer:play", handleExternalPlay);
+  }, [playerId]);
 
   // Helpers for converting pointer position -> progress ratio (0–1)
   const getRatioFromClientX = (clientX: number) => {
@@ -189,16 +223,24 @@ const TrackPlayer: React.FC<TrackPlayerProps> = ({ url }) => {
 
       <button
         type="button"
-        className={styles.button}
+        className={`${styles.button} ${isPlaying ? styles.active : ""}`}
         onClick={togglePlay}
         disabled={!isReady}
-        aria-label={isPlaying ? "Stop" : "Play"}
+        aria-label={isPlaying ? "Pause" : "Play"}
+        aria-pressed={isPlaying}
       >
-        {isPlaying ? (
-          <Pause size={14} className={styles.icon} />
-        ) : (
-          <Play size={14} className={styles.icon} />
-        )}
+        <span className={styles.index}>
+          {typeof trackNumber === "number"
+            ? trackNumber.toString()
+            : (trackNumber ?? "–")}
+        </span>
+        <span className={styles.iconWrap}>
+          {isPlaying ? (
+            <Pause size={14} className={styles.icon} />
+          ) : (
+            <Play size={14} className={styles.icon} />
+          )}
+        </span>
       </button>
 
       <div

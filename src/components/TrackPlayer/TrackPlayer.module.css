@@ -5,6 +5,7 @@
 }
 
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +22,23 @@
     box-shadow 120ms ease-out,
     border-color 120ms ease-out;
   color: white;
+}
+
+.index {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.iconWrap {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 120ms ease, transform 120ms ease;
 }
 
 .button svg {
@@ -43,6 +61,20 @@
   opacity: 0.5;
   cursor: default;
   box-shadow: none;
+}
+
+.root:hover .index,
+.button:focus-visible .index,
+.active .index {
+  opacity: 0;
+  transform: translateY(2px);
+}
+
+.root:hover .iconWrap,
+.button:focus-visible .iconWrap,
+.active .iconWrap {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .progress {

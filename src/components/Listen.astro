@@ -1,27 +1,17 @@
 ---
-import Text from "../components/Text.astro";
-import { Image } from "astro:assets";
-import shefest from "../images/shefest.jpg";
+import Player from "./Player.tsx";
+import album from "../data/album.json";
 ---
 
 <div class="listen" id="listen">
   <div class="left-frame">
-    <Text uppercase type="heading-md">Music</Text>
-
-    <!-- <iframe
-      style="border: 0;"
-      width="100%"
-      height="600px"
-      src="https://bandcamp.com/EmbeddedPlayer/album=3217264252/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
-      seamless
-    >
-    </iframe> -->
+    <Player client:load album={album} />
   </div>
 
-  <Image
+  <img
     id="shefest"
     class="shefest"
-    src={shefest}
+    src={"https://res.cloudinary.com/dyspjkmgs/image/upload/v1766287397/mariela-15_czwvz0.jpg"}
     alt="Mariela standing on a stage singing and playing her guitar."
   />
 </div>

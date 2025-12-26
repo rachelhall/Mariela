@@ -1,0 +1,265 @@
+.albumSection {
+  margin-block: 3rem;
+  padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent),
+    rgba(10, 10, 16, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(14px);
+  margin: auto;
+  color: white;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.coverWrap {
+  max-width: 260px;
+}
+
+.cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.artist {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.82;
+  font-weight: 500;
+}
+
+.summary {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tracks {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.track {
+  padding-block: 0.25rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 120ms ease;
+}
+
+.track:last-child {
+  border-bottom: none;
+}
+
+.trackRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.trackMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.trackTitle {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.trackDuration {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+  padding: 0 1rem;
+}
+
+.activeTrack {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+}
+
+.track:not(.activeTrack):hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+.trackButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trackNumber {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+.trackButtonIcon {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.trackButton:hover .trackNumber,
+.trackButton:focus-visible .trackNumber,
+.playingButton .trackNumber {
+  opacity: 0;
+  transform: translateY(2px);
+}
+
+.trackButton:hover .trackButtonIcon,
+.trackButton:focus-visible .trackButtonIcon,
+.playingButton .trackButtonIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.compact {
+  margin-block: 1rem;
+  padding: 1.25rem 1.5rem;
+  gap: 1rem;
+  border-radius: 1rem;
+}
+
+.compact .hero {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.compact .coverWrap {
+  flex: 0 0 140px;
+  max-width: 140px;
+}
+
+.compact .title {
+  font-size: 1.2rem;
+}
+
+.compact .artist,
+.compact .summary {
+  font-size: 0.85rem;
+}
+
+.compact .tracks {
+  margin-top: 0.75rem;
+}
+
+.compact .track {
+  padding-block: 0.5rem;
+}
+
+.compact .trackRow {
+  gap: 0.5rem;
+}
+
+.compact .trackTitle {
+  font-size: 0.9rem;
+}
+
+.compact .trackButton {
+  width: 2.1rem;
+  height: 2.1rem;
+}
+
+@media (max-width: 540px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .compact .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .compact .coverWrap {
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 720px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .coverWrap {
+    flex: 0 0 220px;
+  }
+
+  .meta {
+    padding-left: 1.75rem;
+  }
+}
+
+@media (min-width: 1040px) {
+  .albumSection {
+    padding-inline: 2.5rem;
+  }
+
+  .hero {
+    margin-bottom: 2.4rem;
+  }
+}

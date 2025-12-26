@@ -10,7 +10,7 @@ import Press from "../components/Press.astro";
 import Listen from "../components/Listen.astro";
 import Contact from "../components/Contact.astro";
 import Gallery from "../components/Gallery.astro";
-import Player from "../components/Player.astro";
+import Player from "../components/Player.tsx";
 import album from "../data/album.json";
 
 const CLOUDINARY_FOLDER_PATH = "44k24"; // update to your folder
@@ -95,13 +95,11 @@ await fetchCloudinaryUrls();
         author="Lizzie Wann"
         publication="The San Diego Troubadour"
       />
-      <Player album={album} />
       <Listen />
-      <Contact />
       <Gallery />
       <Bio />
       <!-- <SocialMediaStats /> -->
-      <Watch />
+      <!-- <Watch /> -->
       <Press />
 
       <TourHistory />
@@ -113,6 +111,6 @@ await fetchCloudinaryUrls();
   .epk {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    background-color: var(--neutral-900);
   }
 </style>
