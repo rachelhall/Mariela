@@ -1,0 +1,108 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background 120ms ease-out,
+    transform 120ms ease-out,
+    box-shadow 120ms ease-out,
+    border-color 120ms ease-out;
+  color: white;
+}
+
+.index {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.iconWrap {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.button svg {
+  stroke: rgba(255, 255, 255, 0.82);
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: translateY(-0.5px);
+}
+
+.button:active {
+  transform: translateY(0.5px);
+  box-shadow: none;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
+
+.root:hover .index,
+.button:focus-visible .index,
+.active .index {
+  opacity: 0;
+  transform: translateY(2px);
+}
+
+.root:hover .iconWrap,
+.button:focus-visible .iconWrap,
+.active .iconWrap {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.progress {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.5)
+  );
+  transition: width 120ms linear;
+}
+
+.time {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+  min-width: 72px;
+  text-align: right;
+}

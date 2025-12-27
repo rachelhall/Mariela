@@ -2,13 +2,12 @@
 import { Image } from "astro:assets";
 import Socials from "../components/Socials.astro";
 import Nav from "../components/Nav.astro";
-import marielaSitting from "../images/mariela-sitting.png";
 import Text from "../components/Text.astro";
 import Quote from "../components/Quote.astro";
 
 interface Props {
   heading?: string;
-  headerImage?: ImageMetadata;
+  headerImage?: ImageMetadata | string;
   subheading?: string;
   quote?: string;
   author?: string;
@@ -25,7 +24,7 @@ const { heading, headerImage,page, subheading, quote, author, publication } =
   return url.replace("/upload/", `/upload/${options}/`);
 }
 const img = optimizeCloudinaryUrl(
-      "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122679/RachelHall-032_lonucu.jpg"
+      "https://res.cloudinary.com/dyspjkmgs/image/upload/v1765303897/RachelHall-160_k7lip8.jpg"
     )
 ---
 
@@ -48,15 +47,20 @@ const img = optimizeCloudinaryUrl(
         <div class="content">
           <div class="heading-container">
             {headerImage && (
-              <Image
-                class="header-image"
-                height="160"
-                src={headerImage}
-                alt="An album cover"
-              />
+              typeof headerImage === "string" ? (
+                <img class="header-image" src={headerImage} alt="An album cover" />
+              ) : (
+                <Image
+                  class="header-image"
+                  height="160"
+                  width="160"
+                  src={"https://res.cloudinary.com/dyspjkmgs/image/upload/v1765130984/underglow_copy_low_res_lagr1v.jpg"}
+                  alt="An album cover"
+                />
+              )
             )}
             <div class="heading">
-              <Text uppercase type="heading-md" color="white">
+              <Text uppercase type="heading-sm" color="white">
                 {heading}
               </Text>
               <Text type="heading-xs" color="white">
@@ -122,6 +126,7 @@ const img = optimizeCloudinaryUrl(
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 5px 5px 5px var(--screen-900);
+    /* transform: translateY(-25%) */
   }
 
   .heading-container {
@@ -131,8 +136,7 @@ const img = optimizeCloudinaryUrl(
 
   .heading {
     max-width: 600px;
-    text-align: right;
-  }
+    }
 
   .header-image {
     border-radius: 10px;
@@ -148,6 +152,7 @@ const img = optimizeCloudinaryUrl(
     }
 
     .content {
+      display: none;
       padding: 1rem;
       box-shadow: unset;
       background-color: unset;

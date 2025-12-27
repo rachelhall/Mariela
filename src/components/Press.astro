@@ -1,59 +1,156 @@
 ---
 import Text from "./Text.astro";
+import press from "../data/press.json";
 ---
 
-<div class="press">
-  <Text color="primary-100" type="heading-md">Press & Reviews</Text>
-  <ul>
-    <li>
-      <strong>The San Diego Troubadour</strong> —
-      <a
-        href="https://sandiegotroubadour.com/theres-no-coming-back-from-moria/"
-        target="_blank">There's No Coming Back from Moriah</a
-      >, <a
-        href="https://sandiegotroubadour.com/mariela-a-sanctuary-for-rachel-hall/"
-        target="_blank">Mariela: A Sanctuary for Rachel Hall</a
-      >
-    </li>
-    <li>
-      <strong>Lightning 100</strong> —
-      <a
-        href="https://lightning100.com/localmusic/mariela-local-artist-of-the-week/"
-        target="_blank">Mariela: Local Artist of the Week</a
-      >
-    </li>
-  </ul>
-</div>
+<section class="press">
+  <div class="press-content">
+    <div>
+      <div class="stinger">
+        <div class="stinger-text">
+          <Text uppercase color="primary-500" type="heading-xs"
+            >The Underglow</Text
+          >
+          <Text italic color="neutral-100">
+            “...is a bright, shimmery pop explosion. But don’t worry, this isn’t
+            sugary, bubblegum pop. This is pop that’s been around the block and
+            has memorized its way from the therapist’s office to the dance
+            floor.”
+          </Text>
+          <Text color="neutral-300">
+            — Lizzie Wann, <a class="publication">The San Diego Troubadour</a>
+          </Text>
+        </div>
+      </div>
+      <ul>
+        {
+          press.map((item) => (
+            <li>
+              <strong>{item.outlet}</strong>
+              {item.articles.length > 1 ? (
+                <ul class="press-list">
+                  {item.articles.map((article) => (
+                    <li>
+                      <a href={article.url} target="_blank" rel="noreferrer">
+                        {article.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <>
+                  {": "}
+                  <a
+                    href={item.articles[0].url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {item.articles[0].title}
+                  </a>
+                </>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="image-wrapper">
+      <img
+        src="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766784913/marielaGPAD-5_kyt6es.jpg"
+        alt="Photo of Mariela."
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
 <style>
   .press {
-    padding: 2rem;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: center;
-    background-color: var(--primary-300);
+    background-color: var(--neutral-900);
+  }
+
+  .stinger {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.03);
+  }
+
+  .stinger-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .publication {
+    color: var(--primary-500);
+    font-style: italic;
+  }
+  .publication:hover {
+    color: var(--primary-300);
+    cursor: pointer;
+  }
+
+  .press-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
   ul {
     list-style: none;
-    max-width: 60%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
+  li {
+    color: var(--neutral-100);
+  }
   a {
-    color: white;
+    color: var(--neutral-100);
   }
   a:hover {
-    color: var(--primary-100);
+    color: var(--neutral-300);
+  }
+
+  .press-list {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0.35rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .image-wrapper img {
+    width: min(520px, 38vw);
+    height: max(600px, 50vh);
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow:
+      0 18px 38px rgba(0, 0, 0, 0.22),
+      0 12px 24px rgba(0, 0, 0, 0.16),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
   }
 
   @media screen and (max-width: 636px) {
     .press {
       padding: 1rem;
     }
-    ul {
-      max-width: unset;
+
+    .image-wrapper img {
+      display: none;
+    }
+
+    .press-content {
+      flex-direction: column;
     }
   }
 </style>

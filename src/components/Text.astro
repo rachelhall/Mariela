@@ -10,31 +10,45 @@ interface Props {
 
   color?:
     | "white"
+    | "neutral-100"
+    | "neutral-300"
+    | "neutral-700"
+    | "neutral-800"
+    | "neutral-900"
     | "primary-100"
     | "primary-300"
     | "primary-500"
+    | "primary-600"
     | "primary-700"
-    | "primary-900";
+    | "primary-900"
+    | "secondary-500"
+    | "secondary-700";
   className?: string;
   textAlign?: "left" | "right" | "center";
   uppercase?: boolean;
   italic?: boolean;
   bold?: boolean;
   light?: boolean;
+  inline?: boolean;
 }
 
 const {
   bold,
-  color = "primary-300",
+  color = "neutral-100",
   italic,
   light,
   textAlign,
   type = "body",
   className,
   uppercase,
+  inline,
 } = Astro.props;
 
-const styles = { color: `var(--${color})`, textAlign };
+const styles = {
+  color: `var(--${color})`,
+  textAlign,
+  ...(inline ? { display: "inline" } : {}),
+};
 
 const getElement = () => {
   switch (type) {

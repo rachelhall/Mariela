@@ -6,13 +6,20 @@ import Shows from "../components/Shows.astro";
 import Watch from "../components/Watch.astro";
 import Subscribe from "../components/Subscribe.astro";
 import Contact from "../components/Contact.astro";
+import Moriah from "../images/moriah-web.jpg";
 ---
 
 <Layout title="Mariela">
   <main>
-    <Header />
+    <Header
+      headerImage={Moriah}
+      heading="The Underglow"
+      quote={`...is a bright, shimmery pop explosion. But don’t worry, this isn’t sugary, bubblegum pop. This is pop that’s been around the block and has memorized its way from the therapist’s office to the dance floor.`}
+      author="Lizzie Wann"
+      publication="The San Diego Troubadour"
+    />
     <Listen />
-    <Shows />
+    <!-- <Shows /> -->
     <Watch />
     <Subscribe />
     <Contact />

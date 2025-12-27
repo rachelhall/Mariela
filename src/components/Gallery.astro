@@ -1,4 +1,6 @@
 ---
+import Text from "../components/Text.astro";
+
 function optimizeCloudinaryUrl(url: string, options = "f_auto,q_auto") {
   if (!url.includes("res.cloudinary.com") || !url.includes("/upload/"))
     return url;
@@ -18,7 +20,8 @@ const rawImages = [
 const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
 ---
 
-<div class="gallery">
+<section class="gallery">
+  <!-- <Text color="primary-500" type="heading-md" uppercase>Photos</Text> -->
   <div class="scroll-container">
     {
       images.map((url) => (
@@ -52,34 +55,51 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
       ))
     }
   </div>
-</div>
+</section>
 
 <style>
   .gallery {
     width: 100%;
-    overflow-x: auto;
+    background-color: var(--neutral-300);
+    padding: 3rem 0;
   }
 
   .scroll-container {
     display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
     scroll-snap-type: x mandatory;
     overflow-x: auto;
+    gap: 1rem;
+    padding: 0.5rem;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    transition: transform 180ms ease;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-container.shifted {
+    transform: translateX(4rem);
   }
 
   .image-container {
     flex: 0 0 auto;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 0.5rem solid var(--neutral-100);
   }
 
   .image-container img {
     display: block;
-    max-height: 600px;
-    height: 100%;
+    height: clamp(220px, 45vw, 520px);
     width: auto;
     object-fit: cover;
-    background-color: #eee;
+    /* border-radius: 1rem; */
   }
 
   /* Shimmer effect */
@@ -161,16 +181,12 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
 
   /* 🌐 Mobile styles */
   @media (max-width: 768px) {
-    .scroll-container {
-      flex-direction: column;
-      align-items: center;
-      overflow-x: visible;
-      scroll-snap-type: none;
+    .gallery {
+      padding: 0;
     }
 
     .image-container img {
-      max-height: 250px;
-      width: 100vw;
+      height: clamp(180px, 50vw, 320px);
     }
 
     .download-button {
@@ -179,3 +195,20 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
     }
   }
 </style>
+
+<script>
+  const scroller = document.querySelector(".scroll-container");
+
+  if (scroller) {
+    scroller.classList.add("shifted");
+    const clearShift = () => {
+      scroller.classList.remove("shifted");
+      scroller.removeEventListener("scroll", clearShift);
+      scroller.removeEventListener("pointerdown", clearShift);
+      scroller.removeEventListener("touchstart", clearShift);
+    };
+    scroller.addEventListener("scroll", clearShift, { once: true });
+    scroller.addEventListener("pointerdown", clearShift, { once: true });
+    scroller.addEventListener("touchstart", clearShift, { once: true });
+  }
+</script>

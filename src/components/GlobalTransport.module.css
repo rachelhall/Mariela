@@ -1,0 +1,125 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.transport {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.transportButtons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pillButton {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    transform 120ms ease,
+    border-color 120ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pillButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.pillButton:active {
+  transform: translateY(1px);
+}
+
+.primary {
+  background: var(--primary-500);
+  border-color: transparent;
+}
+
+.pillButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.primary svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nowPlaying {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 0.2rem;
+}
+
+.nowPlaying small {
+  opacity: 0.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nowPlaying strong {
+  font-size: 1.05rem;
+}
+
+.progressWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.5)
+  );
+  border-radius: inherit;
+  transition: width 120ms linear;
+}
+
+.time {
+  display: flex;
+  gap: 0.4rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 540px) {
+  .transport {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nowPlaying {
+    text-align: left;
+    width: 100%;
+  }
+}

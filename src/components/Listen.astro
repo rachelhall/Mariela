@@ -1,86 +1,25 @@
 ---
+import Player from "./Player.tsx";
+import SplitSection from "./SplitSection.astro";
+import album from "../data/album.json";
 import Text from "../components/Text.astro";
-import { Image } from "astro:assets";
-import shefest from "../images/shefest.jpg";
 ---
 
-<div class="listen" id="listen">
+<SplitSection
+  id="listen"
+  imageSrc="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766785371/mariela-11_qxshgn.jpg"
+  imageAlt="Mariela standing on a stage singing and playing her guitar."
+>
   <div class="left-frame">
-    <Text uppercase type="heading-md">Music</Text>
-    <iframe
-      width="100%"
-      height="480"
-      allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1891232006&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-    ></iframe><div
-      style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"
-    >
-      <a
-        href="https://soundcloud.com/mariela-band"
-        title="Mariela"
-        target="_blank"
-        style="color: #cccccc; text-decoration: none;">Mariela</a
-      > · <a
-        href="https://soundcloud.com/mariela-band/sets/mariela-1"
-        title="Mariela"
-        target="_blank"
-        style="color: #cccccc; text-decoration: none;">Mariela</a
-      >
-    </div>
-    <iframe
-      src="https://open.spotify.com/embed/artist/0fOdB0OUb1fBfHf8V4N3Hy?utm_source=generator&theme=0"
-      width="100%"
-      height="480"
-      allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    ></iframe>
-    <!-- <iframe
-      style="border: 0;"
-      width="100%"
-      height="600px"
-      src="https://bandcamp.com/EmbeddedPlayer/album=3217264252/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/"
-      seamless
-    >
-    </iframe> -->
+    <Text uppercase color="primary-500" type="heading-sm">Albums</Text>
+    <Player client:load album={album} />
   </div>
-
-  <Image
-    id="shefest"
-    class="shefest"
-    src={shefest}
-    alt="Mariela standing on a stage singing and playing her guitar."
-  />
-</div>
+</SplitSection>
 <style lang="scss">
-  .listen {
-    display: flex;
-    background-color: var(--white);
-    position: relative;
-
-    img {
-      width: 47.5%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    iframe {
-      border-radius: 0;
-      border: none;
-    }
-  }
-
   .left-frame {
+    padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 1rem;
-    padding: 2rem;
-    align-items: center;
-  }
-
-  @media screen and (max-width: 636px) {
-    #shefest {
-      display: none;
-    }
+    gap: 2rem;
   }
 </style>
