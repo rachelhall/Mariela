@@ -122,16 +122,10 @@ const showData = {
       {
         Object.entries(showData.citiesAndVenues).map(([city, venues]) => (
           <li>
-            <details>
-              <summary>
-                <strong class="city">{city}</strong>
-              </summary>
-              <ul>
-                {venues.map((venue) => (
-                  <li>{venue}</li>
-                ))}
-              </ul>
-            </details>
+            <Text bold inline type="heading-xs" color="primary-500">
+              {city} -
+            </Text>
+            <Text inline>{venues.join(", ")}</Text>
           </li>
         ))
       }
@@ -191,16 +185,6 @@ const showData = {
   .accordion summary {
     cursor: pointer;
     font-weight: bold;
-  }
-
-  .accordion ul {
-    padding-left: 1rem;
-    margin-top: 0.5rem;
-  }
-
-  .city:hover {
-    color: var(--neutral-300);
-    cursor: pointer;
   }
 
   @media screen and (max-width: 636px) {

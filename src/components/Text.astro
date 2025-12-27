@@ -29,6 +29,7 @@ interface Props {
   italic?: boolean;
   bold?: boolean;
   light?: boolean;
+  inline?: boolean;
 }
 
 const {
@@ -40,9 +41,14 @@ const {
   type = "body",
   className,
   uppercase,
+  inline,
 } = Astro.props;
 
-const styles = { color: `var(--${color})`, textAlign };
+const styles = {
+  color: `var(--${color})`,
+  textAlign,
+  ...(inline ? { display: "inline" } : {}),
+};
 
 const getElement = () => {
   switch (type) {
