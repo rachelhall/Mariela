@@ -1,6 +1,7 @@
 ---
 import CardShell from "./CardShell";
 import Text from "./Text.astro";
+import SplitSection from "./SplitSection.astro";
 
 const showData = {
   tours: [
@@ -79,56 +80,50 @@ const showData = {
 };
 ---
 
-<section class="shows" id="shows">
-  <Text textAlign="center" uppercase type="heading-md" color="primary-900">
-    Tour/Show History
-  </Text>
-
-  <div class="content">
-    <!-- TOURS -->
-    <CardShell title="Tours">
-      <ul>
-        {
-          showData.tours.map((tour) => (
-            <li>
-              <strong>
-                <a class="link" href={tour.link} target="_blank">
-                  {tour.name}
-                </a>
-              </strong>{" "}
-              {tour.description}
-              <a class="link" href={tour.with.url} target="_blank">
-                {tour.with.name}
+<SplitSection
+  id="shows"
+  imageSrc="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766785544/mariela-4_jahzv5.jpg"
+  imageAlt="Mariela performing live."
+>
+  <section class="shows">
+    <Text uppercase color="primary-500" type="heading-sm">Tours</Text>
+    <ul>
+      {
+        showData.tours.map((tour) => (
+          <li>
+            <strong>
+              <a class="link" href={tour.link} target="_blank">
+                {tour.name}
               </a>
-              , {tour.year}
-            </li>
-          ))
-        }
-      </ul>
-    </CardShell>
-
-    <!-- FESTIVALS -->
-    <CardShell title="Festivals">
-      <ul>
-        {
-          showData.festivals.map((festival) => (
-            <li>
-              <strong>{festival.name}</strong>, {festival.year} —{" "}
-              {festival.location}
-            </li>
-          ))
-        }
-      </ul>
-    </CardShell>
-
-    <!-- CITIES & VENUES -->
-    <CardShell title="Cities + Venues">
-      <div class="accordion">
-        {
-          Object.entries(showData.citiesAndVenues).map(([city, venues]) => (
+            </strong>{" "}
+            {tour.description}
+            <a class="link" href={tour.with.url} target="_blank">
+              {tour.with.name}
+            </a>
+            , {tour.year}
+          </li>
+        ))
+      }
+    </ul>
+    <Text uppercase color="primary-500" type="heading-sm">Festivals</Text>
+    <ul>
+      {
+        showData.festivals.map((festival) => (
+          <li>
+            <strong>{festival.name}</strong>, {festival.year} —{" "}
+            {festival.location}
+          </li>
+        ))
+      }
+    </ul>
+    <Text uppercase color="primary-500" type="heading-sm">Cities/Venues</Text>
+    <ul class="venues">
+      {
+        Object.entries(showData.citiesAndVenues).map(([city, venues]) => (
+          <li>
             <details>
               <summary>
-                <strong>{city}</strong>
+                <strong class="city">{city}</strong>
               </summary>
               <ul>
                 {venues.map((venue) => (
@@ -136,29 +131,20 @@ const showData = {
                 ))}
               </ul>
             </details>
-          ))
-        }
-      </div>
-    </CardShell>
-  </div>
-</section>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</SplitSection>
 
 <style lang="scss">
   .shows {
-    padding: 3rem clamp(1.5rem, 4vw, 3rem);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    margin-block: 2rem;
-    background-color: var(--white);
-  }
-
-  .content {
-    width: min(1100px, 100%);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    align-items: stretch;
+    padding: 4rem;
+    background-color: var(--neutral-900);
   }
 
   .link {
@@ -184,6 +170,7 @@ const showData = {
   }
 
   .accordion details {
+    color: var(--neutral-100);
     margin-top: 0.5rem;
     background: rgba(255, 255, 255, 0.04);
     padding: 0.75rem;
@@ -196,25 +183,32 @@ const showData = {
   }
 
   .accordion details:hover {
-    background: rgba(255, 255, 255, 0.07);
+    color: var(--neutral-300);
     transform: translateY(-1px);
   }
 
   .accordion summary {
     cursor: pointer;
     font-weight: bold;
-    color: var(--white);
   }
 
   .accordion ul {
     padding-left: 1rem;
     margin-top: 0.5rem;
-    color: var(--neutral-100);
+  }
+
+  .city:hover {
+    color: var(--neutral-300);
+    cursor: pointer;
   }
 
   @media screen and (max-width: 636px) {
     .shows {
       padding: 2rem 1.25rem;
+    }
+
+    .content {
+      padding-right: 0;
     }
   }
 </style>

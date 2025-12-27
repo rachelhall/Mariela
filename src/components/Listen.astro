@@ -1,49 +1,25 @@
 ---
 import Player from "./Player.tsx";
+import SplitSection from "./SplitSection.astro";
 import album from "../data/album.json";
+import Text from "../components/Text.astro";
 ---
 
-<div class="listen" id="listen">
+<SplitSection
+  id="listen"
+  imageSrc="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766785371/mariela-11_qxshgn.jpg"
+  imageAlt="Mariela standing on a stage singing and playing her guitar."
+>
   <div class="left-frame">
+    <Text uppercase color="primary-500" type="heading-sm">Albums</Text>
     <Player client:load album={album} />
   </div>
-
-  <img
-    id="shefest"
-    class="shefest"
-    src={"https://res.cloudinary.com/dyspjkmgs/image/upload/v1766287397/mariela-15_czwvz0.jpg"}
-    alt="Mariela standing on a stage singing and playing her guitar."
-  />
-</div>
+</SplitSection>
 <style lang="scss">
-  .listen {
-    display: flex;
-    background-color: var(--white);
-    position: relative;
-
-    img {
-      width: 47.5%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    iframe {
-      border-radius: 0;
-      border: none;
-    }
-  }
-
   .left-frame {
+    padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 1rem;
-    padding: 4rem;
-  }
-
-  @media screen and (max-width: 636px) {
-    #shefest {
-      display: none;
-    }
+    gap: 2rem;
   }
 </style>

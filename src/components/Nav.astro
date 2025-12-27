@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import wordmark from "../images/wordmark.png";
 import "../styles/global.css";
 import Hamburger from "./Hamburger.astro";
 const { page } = Astro.props;
@@ -54,6 +52,7 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
     z-index: 5;
     width: 100%;
     padding: 1rem 0;
+
   }
   ul {
     list-style: none;
@@ -73,25 +72,9 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
     position: relative;
   }
 
-  // a:after {
-  //   content: "";
-  //   position: absolute;
-  //   left: 50%;
-  //   bottom: -2px;
-  //   width: 0px;
-  //   height: 2px;
-  //   background: var(--primary-100);
-  //   transition: all 0.15s;
-  // }
-
-  // a:hover:after {
-  //   width: 100%;
-  //   left: 0;
-  // }
-
   a {
     text-decoration: none;
-    color: var(--primary-100);
+    color: var(--white);
   }
   a:hover {
     color: var(--white);
@@ -102,6 +85,7 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
     height: 4rem;
     width: auto;
     transform: translateY(0.5rem);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
   }
 
   .divider {

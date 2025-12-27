@@ -3,44 +3,59 @@ import Text from "./Text.astro";
 import press from "../data/press.json";
 ---
 
-<div class="press">
-  <Text color="primary-100" type="heading-md">Press Highlights</Text>
-  <ul>
-    {
-      press.map((item) => (
-        <li>
-          <strong>{item.outlet}</strong>
-          {item.articles.length > 1 ? (
-            <ul class="press-list">
-              {item.articles.map((article) => (
-                <li>
-                  <a href={article.url} target="_blank" rel="noreferrer">
-                    {article.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <>
-              {": "}
-              <a href={item.articles[0].url} target="_blank" rel="noreferrer">
-                {item.articles[0].title}
-              </a>
-            </>
-          )}
-        </li>
-      ))
-    }
-  </ul>
-</div>
+<section class="press">
+  <Text uppercase color="primary-500" type="heading-sm">Press</Text>
+  <div class="press-content">
+    <ul>
+      {
+        press.map((item) => (
+          <li>
+            <strong>{item.outlet}</strong>
+            {item.articles.length > 1 ? (
+              <ul class="press-list">
+                {item.articles.map((article) => (
+                  <li>
+                    <a href={article.url} target="_blank" rel="noreferrer">
+                      {article.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <>
+                {": "}
+                <a href={item.articles[0].url} target="_blank" rel="noreferrer">
+                  {item.articles[0].title}
+                </a>
+              </>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+    <div class="image-wrapper">
+      <img
+        src="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766784913/marielaGPAD-5_kyt6es.jpg"
+        alt="Photo of Mariela."
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
 <style>
   .press {
-    padding: 2rem;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: center;
-    background-color: var(--neutral-800);
+    background-color: var(--neutral-900);
+  }
+
+  .press-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
   ul {
@@ -68,12 +83,24 @@ import press from "../data/press.json";
     gap: 0.35rem;
   }
 
+  .image-wrapper img {
+    width: min(520px, 38vw);
+    height: max(400px, 50vh);
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow:
+      0 18px 38px rgba(0, 0, 0, 0.22),
+      0 12px 24px rgba(0, 0, 0, 0.16),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
   @media screen and (max-width: 636px) {
     .press {
       padding: 1rem;
     }
-    ul {
-      max-width: unset;
+
+    .press-content {
+      flex-direction: column;
     }
   }
 </style>

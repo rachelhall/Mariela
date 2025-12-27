@@ -166,7 +166,7 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
   const trackButtonClass = `${styles.trackButton} ${compact ? styles.trackButtonCompact : ""}`;
 
   return (
-    <CardShell title={album.album} className={compact ? styles.compactCard : ""}>
+    <CardShell className={compact ? styles.compactCard : ""}>
       <header className={heroClass}>
         <div className={coverWrapClass}>
           <img

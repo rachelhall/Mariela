@@ -4,11 +4,9 @@ import Socials from "./Socials.astro";
 ---
 
 <div class="contact" id="contact">
-  <Text uppercase color="primary-100" type="heading-sm" color="primary-100"
-    >Contact</Text
-  >
+  <Text uppercase color="white" type="heading-sm">Contact</Text>
   <a href="mailto:natalie@raspberrymanagement.com">
-    <Text color="primary-100">natalie@raspberrymanagement.com</Text>
+    <Text color="white">natalie@raspberrymanagement.com</Text>
   </a>
   <Socials direction="horizontal" />
 </div>
@@ -19,8 +17,9 @@ import Socials from "./Socials.astro";
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--white);
   }
   a {
-    color: var(--primary-100);
+    color: var(--white);
   }
 </style>

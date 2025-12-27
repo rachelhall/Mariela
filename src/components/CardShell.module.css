@@ -1,5 +1,4 @@
 .card {
-  margin-block: 3rem;
   padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
   border-radius: 1.5rem;
   background:

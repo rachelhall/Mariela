@@ -9,8 +9,11 @@
 
   /* BRAND (Mariela red) */
   --primary-500: #e0453a; /* your album logo color */
+  --primary-300: #ef7f77; /* lighter tint */
+  --primary-100: #f8d7d3; /* soft wash */
   --primary-600: #c53d35; /* slightly deeper for hover states */
   --primary-700: #9e3029; /* deeper still for active/pressed */
+  --primary-900: #4d1915; /* darkest for rich contrast */
 
   /* Muted complementary color (a soft desaturated teal) */
   --secondary-500: #3a6f73;
