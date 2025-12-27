@@ -1,17 +1,13 @@
 ---
 import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
-import Moriah from "../images/moriah-web.jpg";
 import Bio from "../components/Bio.astro";
-import SocialMediaStats from "../components/SocialMediaStats.astro";
 import TourHistory from "../components/TourHistory.astro";
 import Watch from "../components/Watch.astro";
 import Press from "../components/Press.astro";
 import Listen from "../components/Listen.astro";
 import Contact from "../components/Contact.astro";
 import Gallery from "../components/Gallery.astro";
-import Player from "../components/Player.tsx";
-import album from "../data/album.json";
 
 const CLOUDINARY_FOLDER_PATH = "44k24"; // update to your folder
 
@@ -89,19 +85,16 @@ await fetchCloudinaryUrls();
     <div class="epk">
       <Header
         page="epk"
-        headerImage={Moriah}
-        heading="The Underglow"
-        quote={`...is a bright, shimmery pop explosion. But don’t worry, this isn’t sugary, bubblegum pop. This is pop that’s been around the block and has memorized its way from the therapist’s office to the dance floor.`}
-        author="Lizzie Wann"
-        publication="The San Diego Troubadour"
+        heading="A note from Mariela"
+        quote={`I’m not out here, just trying to play shows and pay my rent. I want to play for the people who are desperate to see trans and queer joy, freedom, and healing. Every time I step on stage or release a record, I want to connect with that young person in the crowd, me from 5 years ago, who is still trying to believe they belong, that they are worthy of love. I’m looking for the music industry’s big players like managers, bookers, labels, etc. with the resources and network to help me make those connections happen on a larger scale. When trans artists have the opportunity to share, we remind everyone what authenticity and inclusion truly look and sound like.`}
+        author="- Mariela"
       />
       <Listen />
       <Bio />
       <Gallery />
       <!-- <SocialMediaStats /> -->
-      <!-- <Watch /> -->
       <Press />
-
+      <Watch />
       <TourHistory />
       <Contact />
     </div>

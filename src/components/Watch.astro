@@ -3,7 +3,7 @@ import Text from "../components/Text.astro";
 ---
 
 <section class="watch" id="watch">
-  <Text uppercase textAlign="center" type="heading-md">Watch</Text>
+  <Text uppercase type="heading-sm" color="primary-500">Watch</Text>
   <div class="carousel">
     <iframe
       width="560"
@@ -26,8 +26,8 @@ import Text from "../components/Text.astro";
 
 <style>
   .watch {
-    padding: 2rem;
-    background-color: var(--neutral-100);
+    padding: 4rem;
+    background-color: var(--neutral-300);
     color: var(--secondary-700);
     display: flex;
     flex-direction: column;
@@ -38,7 +38,6 @@ import Text from "../components/Text.astro";
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
   }
 </style>

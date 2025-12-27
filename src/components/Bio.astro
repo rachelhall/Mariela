@@ -1,8 +1,13 @@
 ---
 import Text from "../components/Text.astro";
+import SplitSection from "./SplitSection.astro";
 ---
 
-<div class="bio">
+<SplitSection
+  id="bio"
+  imageSide="left"
+  imageSrc="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766287397/mariela-15_czwvz0.jpg"
+>
   <div class="content">
     <div class="version">
       <Text uppercase color="primary-500" type="heading-sm">Short bio</Text>
@@ -49,14 +54,14 @@ import Text from "../components/Text.astro";
       </Text>
     </div>
   </div>
-  <div class="image-wrapper">
+  <!-- <div class="image-wrapper">
     <img
       src="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766287397/mariela-15_czwvz0.jpg"
       alt="Photo of Mariela."
       loading="lazy"
     />
-  </div>
-</div>
+  </div> -->
+</SplitSection>
 
 <style>
   .bio {
@@ -83,6 +88,8 @@ import Text from "../components/Text.astro";
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding: 4rem;
+    background-color: var(--neutral-900);
   }
 
   .image-wrapper img {

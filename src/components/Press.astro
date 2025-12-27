@@ -4,35 +4,56 @@ import press from "../data/press.json";
 ---
 
 <section class="press">
-  <Text uppercase color="primary-500" type="heading-sm">Press</Text>
   <div class="press-content">
-    <ul>
-      {
-        press.map((item) => (
-          <li>
-            <strong>{item.outlet}</strong>
-            {item.articles.length > 1 ? (
-              <ul class="press-list">
-                {item.articles.map((article) => (
-                  <li>
-                    <a href={article.url} target="_blank" rel="noreferrer">
-                      {article.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <>
-                {": "}
-                <a href={item.articles[0].url} target="_blank" rel="noreferrer">
-                  {item.articles[0].title}
-                </a>
-              </>
-            )}
-          </li>
-        ))
-      }
-    </ul>
+    <div>
+      <div class="stinger">
+        <div class="stinger-text">
+          <Text uppercase color="primary-500" type="heading-xs"
+            >The Underglow</Text
+          >
+          <Text italic color="neutral-100">
+            “...is a bright, shimmery pop explosion. But don’t worry, this isn’t
+            sugary, bubblegum pop. This is pop that’s been around the block and
+            has memorized its way from the therapist’s office to the dance
+            floor.”
+          </Text>
+          <Text color="neutral-300">
+            — Lizzie Wann, <a class="publication">The San Diego Troubadour</a>
+          </Text>
+        </div>
+      </div>
+      <ul>
+        {
+          press.map((item) => (
+            <li>
+              <strong>{item.outlet}</strong>
+              {item.articles.length > 1 ? (
+                <ul class="press-list">
+                  {item.articles.map((article) => (
+                    <li>
+                      <a href={article.url} target="_blank" rel="noreferrer">
+                        {article.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <>
+                  {": "}
+                  <a
+                    href={item.articles[0].url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {item.articles[0].title}
+                  </a>
+                </>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
     <div class="image-wrapper">
       <img
         src="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766784913/marielaGPAD-5_kyt6es.jpg"
@@ -49,6 +70,31 @@ import press from "../data/press.json";
     flex-direction: column;
     gap: 2rem;
     background-color: var(--neutral-900);
+  }
+
+  .stinger {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.03);
+  }
+
+  .stinger-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .publication {
+    color: var(--primary-500);
+    font-style: italic;
+  }
+  .publication:hover {
+    color: var(--primary-300);
+    cursor: pointer;
   }
 
   .press-content {
@@ -85,7 +131,7 @@ import press from "../data/press.json";
 
   .image-wrapper img {
     width: min(520px, 38vw);
-    height: max(400px, 50vh);
+    height: max(600px, 50vh);
     object-fit: cover;
     border-radius: 12px;
     box-shadow:
