@@ -1,6 +1,4 @@
 ---
-import Text from "../components/Text.astro";
-
 function optimizeCloudinaryUrl(url: string, options = "f_auto,q_auto") {
   if (!url.includes("res.cloudinary.com") || !url.includes("/upload/"))
     return url;
@@ -9,12 +7,20 @@ function optimizeCloudinaryUrl(url: string, options = "f_auto,q_auto") {
 }
 
 const rawImages = [
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1767051976/IMG_9010_ddxuv4.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122679/RachelHall-032_lonucu.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1766988147/20250727_Gay_Panic_at_the_Disco_jackiexphoto-21_rfnie0.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122689/RachelHall-121_h2jv9c.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1766785371/mariela-11_qxshgn.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122694/RachelHall-141_w3hy6q.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1766784913/marielaGPAD-5_kyt6es.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1766287397/mariela-15_czwvz0.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122686/RachelHall-070_v2elw9.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1767050065/SheFest2024_3_of_24_av4jf1.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122680/RachelHall-065_d4gsos.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1767051791/IMG_9087_g1eg4h.jpg",
   "https://res.cloudinary.com/dyspjkmgs/image/upload/v1746122680/RachelHall-068_ionsg0.jpg",
+  "https://res.cloudinary.com/dyspjkmgs/image/upload/v1767052784/IMG_4296_de82pb.jpg",
 ];
 
 const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
@@ -195,7 +201,7 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
     }
   }
 </style>
-
+<!--
 <script>
   const scroller = document.querySelector(".scroll-container");
 
@@ -211,4 +217,4 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
     scroller.addEventListener("pointerdown", clearShift, { once: true });
     scroller.addEventListener("touchstart", clearShift, { once: true });
   }
-</script>
+</script> -->

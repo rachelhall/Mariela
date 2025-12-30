@@ -6,9 +6,11 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
 ---
 
 <nav>
-  <!-- <Hamburger /> -->
+  <Hamburger />
   <ul class="nav-links">{page === 'epk'?
   (
+    <li><a href="/">Home</a></li>
+    <div class="divider"></div>
   <li><a href="#listen">Music</a></li>
     <div class="divider"></div>
     <li><a href="#shows">Show History</a></li>
@@ -101,6 +103,7 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
 
     nav {
       height: 100%;
+      padding: 0;
     }
 
     .expanded {
