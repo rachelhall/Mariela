@@ -1,14 +1,13 @@
 ---
-import Text from "../components/Text.astro";
+
 ---
 
 <section class="watch" id="watch">
-  <Text uppercase type="heading-sm" color="primary-500">Watch</Text>
-  <div class="carousel">
+  <div class="scroll-container">
     <iframe
       width="560"
       height="315"
-      src="https://www.youtube.com/embed/eoy5aCUsNic?si=K-1J8aZRCM1p26vU"
+      src="https://www.youtube.com/embed/ovbElcxvJuc?si=hmDwk5jegyAf87W8"
       title="YouTube video player"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
@@ -21,12 +20,20 @@ import Text from "../components/Text.astro";
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/eoy5aCUsNic?si=K-1J8aZRCM1p26vU"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
   </div>
 </section>
 
 <style>
   .watch {
-    padding: 4rem;
+    padding: 2rem 1rem;
     background-color: var(--neutral-300);
     color: var(--secondary-700);
     display: flex;
@@ -39,6 +46,26 @@ import Text from "../components/Text.astro";
     gap: 1rem;
     flex-wrap: wrap;
     align-items: center;
+  }
+
+  .scroll-container iframe {
+    border-radius: 1rem;
+    display: block;
+    border: 0.5rem solid var(--neutral-100);
+    object-fit: cover;
+  }
+
+  .scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    transition: transform 180ms ease;
   }
 
   @media screen and (max-width: 636px) {
