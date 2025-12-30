@@ -74,6 +74,14 @@ const img = optimizeCloudinaryUrl(
                 />
               )}
             </div>
+
+            <div class="heading-mobile">
+              <Text uppercase type="heading-lg"  textAlign="center">
+                Mariela
+              </Text>
+              <Text textAlign="center" >Indie Rock Princess</Text>
+                          </div>
+
           </div>
         </div>
       </div>
@@ -88,6 +96,7 @@ const img = optimizeCloudinaryUrl(
   .image-wrapper {
     position: relative;
   }
+
   .background-image {
     display: block;
     object-fit: cover;
@@ -126,8 +135,7 @@ const img = optimizeCloudinaryUrl(
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 5px 5px 5px var(--screen-900);
-    /* transform: translateY(-25%) */
-  }
+      }
 
   .heading-container {
     display: flex;
@@ -138,6 +146,9 @@ const img = optimizeCloudinaryUrl(
     max-width: 600px;
     }
 
+    .heading-mobile {
+      display: none;
+    }
   .header-image {
     border-radius: 10px;
   }
@@ -147,12 +158,16 @@ const img = optimizeCloudinaryUrl(
       display: none;
     }
 
-    .heading-container {
+    .heading {
+      display: none;
+    }
+
+    .heading-mobile {
+      display: block;
 
     }
 
     .content {
-      display: none;
       padding: 1rem;
       box-shadow: unset;
       background-color: unset;
@@ -165,4 +180,6 @@ const img = optimizeCloudinaryUrl(
     .header-image {
       display: none;
     }
+
+
 </style>

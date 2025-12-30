@@ -6,12 +6,12 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
 ---
 
 <nav>
-  <!-- <Hamburger /> -->
+  <Hamburger />
   <ul class="nav-links">{page === 'epk'?
   (
-  <li><a href="#listen">Music</a></li>
+    <li class="home"><a href="/">Home</a></li>
     <div class="divider"></div>
-    <li><a href="#shows">Show History</a></li>
+  <li><a href="#listen">Music</a></li>
     <div class="divider"></div>
     <li><a href="#watch">Video</a></li>
     <div class="divider"></div>
@@ -21,8 +21,8 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
       </a>
     </li>
         <div class="divider"></div>
-    <li><a href="/epk">EPK</a></li>
-    <div class="divider"></div>
+        <li><a href="#shows">Show History</a></li>
+       <div class="divider"></div>
     <li><a href="#contact">Contact</a></li>
   ): (
     <li><a href="#listen">Music</a></li>
@@ -90,6 +90,10 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
     display: none;
   }
 
+  .home {
+    display: none;
+  }
+
   @media screen and (max-width: 636px) {
     #logo {
       display: none;
@@ -101,6 +105,7 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
 
     nav {
       height: 100%;
+      padding: 0;
     }
 
     .expanded {
@@ -120,6 +125,9 @@ const underglowLogo = 'https://res.cloudinary.com/dyspjkmgs/image/upload/v176541
       margin: 0;
     }
     li {
+    }
+    .home {
+      display: block;
     }
   }
 </style>

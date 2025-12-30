@@ -1,104 +1,105 @@
 ---
+import Contact from "./Contact.astro";
+import SplitSection from "./SplitSection.astro";
 import Text from "./Text.astro";
 ---
 
-<div class="contact" id="contact">
-  <Text uppercase color="white" type="heading-lg" textAlign="center">
-    email updates</Text
-  >
-
-  <div class="form" id="mc_embed_shell">
-    <div id="mc_embed_signup">
-      <form
-        action="https://band.us17.list-manage.com/subscribe/post?u=9a4f5d8cb992c6cf459593c29&id=cd77f572af&f_id=0065dee3f0"
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
-        class="validate"
-        target="_self"
-        novalidate=""
-      >
-        <Text textAlign="center" bold color="primary-900"
-          >Sign up to receive email updates from Mariela.</Text
+<SplitSection
+  imageSide="left"
+  imageSrc="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766988345/marielaGPAD-2_k36ieu.jpg"
+  imageMaxHeight="70vh"
+  id="contact"
+>
+  <div class="contact">
+    <Text uppercase color="primary-500" type="heading-sm"> email updates</Text>
+    <div class="form" id="mc_embed_shell">
+      <div id="mc_embed_signup">
+        <form
+          action="https://band.us17.list-manage.com/subscribe/post?u=9a4f5d8cb992c6cf459593c29&id=cd77f572af&f_id=0065dee3f0"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="validate"
+          target="_self"
+          novalidate=""
         >
-        <div id="mc_embed_signup_scroll">
-          <div class="mc-field-group">
-            <label for="mce-EMAIL"
-              >Email <span class="asterisk">(required)</span></label
-            ><input
-              type="email"
-              name="EMAIL"
-              class="required email"
-              id="mce-EMAIL"
-              required=""
-              value=""
-            />
-          </div>
-          <div id="mce-responses" class="clear foot">
-            <div
-              class="response"
-              id="mce-error-response"
-              style="display: none;"
-            >
-            </div>
-            <div
-              class="response"
-              id="mce-success-response"
-              style="display: none;"
-            >
-            </div>
-          </div>
-          <div aria-hidden="true" style="position: absolute; left: -5000px;">
-            /* real people should not fill this in and expect good things - do
-            not remove this or risk form bot signups */
-            <input
-              type="text"
-              name="b_9a4f5d8cb992c6cf459593c29_cd77f572af"
-              tabindex="-1"
-              value=""
-            />
-          </div>
-          <div class="optionalParent">
-            <div class="clear foot">
-              <input
-                type="submit"
-                name="subscribe"
-                id="mc-embedded-subscribe"
-                class="button"
-                value="Subscribe"
+          <Text bold color="white"
+            >Sign up to receive email updates from Mariela.</Text
+          >
+          <div id="mc_embed_signup_scroll">
+            <div class="mc-field-group">
+              <label for="mce-EMAIL"
+                >Email <span class="asterisk">(required)</span></label
+              ><input
+                type="email"
+                name="EMAIL"
+                class="required email"
+                id="mce-EMAIL"
+                required=""
+                value=""
               />
             </div>
+            <div id="mce-responses" class="clear foot">
+              <div
+                class="response"
+                id="mce-error-response"
+                style="display: none;"
+              >
+              </div>
+              <div
+                class="response"
+                id="mce-success-response"
+                style="display: none;"
+              >
+              </div>
+            </div>
+            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+              /* real people should not fill this in and expect good things - do
+              not remove this or risk form bot signups */
+              <input
+                type="text"
+                name="b_9a4f5d8cb992c6cf459593c29_cd77f572af"
+                tabindex="-1"
+                value=""
+              />
+            </div>
+            <div class="optionalParent">
+              <div class="clear foot">
+                <input
+                  type="submit"
+                  name="subscribe"
+                  id="mc-embedded-subscribe"
+                  class="button"
+                  value="Subscribe"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+</SplitSection>
 
 <style lang="scss">
   .contact {
     padding: 2rem;
-    background-color: var(--primary-700);
+    background-color: var(--neutral-800);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 1rem;
-    color: var(--primary-900);
+    flex: 1;
+    color: var(--white);
   }
 
   form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 1rem;
-    padding: 2rem 1rem;
-    margin: 1rem;
     border-radius: 5px;
     max-width: 600px;
-    background-color: var(--primary-100);
-    box-shadow: 7px 7px 5px 1px var(--primary-900);
   }
 
   input {

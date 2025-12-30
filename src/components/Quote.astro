@@ -14,11 +14,12 @@ const { quote, author, publication } = Astro.props;
   .attribution {
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-end; */
     gap: 0.5rem;
   }
 
   @media screen and (max-width: 636px) {
+    .quote {
+    }
     .attribution {
       flex-direction: column;
     }
