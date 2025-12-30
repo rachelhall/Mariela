@@ -27,7 +27,6 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
 ---
 
 <section class="gallery">
-  <!-- <Text color="primary-500" type="heading-md" uppercase>Photos</Text> -->
   <div class="scroll-container">
     {
       images.map((url) => (
@@ -105,7 +104,6 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
     height: clamp(220px, 45vw, 520px);
     width: auto;
     object-fit: cover;
-    /* border-radius: 1rem; */
   }
 
   /* Shimmer effect */
@@ -201,20 +199,3 @@ const images = rawImages.map((url) => optimizeCloudinaryUrl(url));
     }
   }
 </style>
-<!--
-<script>
-  const scroller = document.querySelector(".scroll-container");
-
-  if (scroller) {
-    scroller.classList.add("shifted");
-    const clearShift = () => {
-      scroller.classList.remove("shifted");
-      scroller.removeEventListener("scroll", clearShift);
-      scroller.removeEventListener("pointerdown", clearShift);
-      scroller.removeEventListener("touchstart", clearShift);
-    };
-    scroller.addEventListener("scroll", clearShift, { once: true });
-    scroller.addEventListener("pointerdown", clearShift, { once: true });
-    scroller.addEventListener("touchstart", clearShift, { once: true });
-  }
-</script> -->
