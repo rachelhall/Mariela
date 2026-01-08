@@ -9,49 +9,51 @@ import SplitSection from "./SplitSection.astro";
   imageSrc="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766287397/mariela-15_czwvz0.jpg"
 >
   <div class="content">
-    <div class="version">
-      <Text color="primary-500" type="heading-sm">Short Bio</Text>
-      <Text className="short-bio">
-        Mariela is an indie-pop artist whose debut album The Underglow bursts
-        with trans femme joy, anthemic hooks, unrequited love and unrepentant
-        sincerity. Blending confessional lyrics with glittering production,
-        Mariela crafts music for anyone yearning to be themselves and find their
-        place. With growing festival and tour momentum, she’s carving out a
-        space for queer/trans artists and women to thrive in the spotlight, not
-        the margins.
-      </Text>
-    </div>
-    <div class="version">
-      <Text color="primary-500" type="heading-sm">Full Bio</Text>
-      <Text>
-        Mariela emerges as a bold new voice in indie-pop with The Underglow,
-        fusing vibrant production, lyrical honesty, and trans femme freedom into
-        a dance party where everyone is invited. Across ten exuberant tracks,
-        Mariela turns personal liberation into communal joy with a mix of
-        roaring guitars, sugary synths, and cathartic anthems that explore the
-        loss of her marriage and the way that self-actualization has put a
-        strain on her relationships with her family of origin.
-      </Text>
-      <Text>
-        Moriah, explores the similarities between the biblical story, “The
-        binding of Isaac on Mt. Moriah” to the way evangelical parents relate to
-        their queer children while The Girls of Summer playfully reimagines a
-        queer twist on the Don Henley classic.
-      </Text>
+    <div class="paragraph-container">
+      <div class="version">
+        <Text color="primary-500" type="heading-sm">Short Bio</Text>
+        <Text className="short-bio">
+          Mariela is an indie-pop artist whose debut album The Underglow bursts
+          with trans femme joy, anthemic hooks, unrequited love and unrepentant
+          sincerity. Blending confessional lyrics with glittering production,
+          Mariela crafts music for anyone yearning to be themselves and find
+          their place. With growing festival and tour momentum, she’s carving
+          out a space for queer/trans artists and women to thrive in the
+          spotlight, not the margins.
+        </Text>
+      </div>
+      <div class="version">
+        <Text color="primary-500" type="heading-sm">Full Bio</Text>
+        <Text>
+          Mariela emerges as a bold new voice in indie-pop with The Underglow,
+          fusing vibrant production, lyrical honesty, and trans femme freedom
+          into a dance party where everyone is invited. Across ten exuberant
+          tracks, Mariela turns personal liberation into communal joy with a mix
+          of roaring guitars, sugary synths, and cathartic anthems that explore
+          the loss of her marriage and the way that self-actualization has put a
+          strain on her relationships with her family of origin.
+        </Text>
+        <Text>
+          Moriah, explores the similarities between the biblical story, “The
+          binding of Isaac on Mt. Moriah” to the way evangelical parents relate
+          to their queer children while The Girls of Summer playfully reimagines
+          a queer twist on the Don Henley classic.
+        </Text>
 
-      <Text>
-        Co-written with a dynamic circle of queer and allied artists, including
-        Grammy-winner Melody Walker, the record’s sound pulses with the energy
-        of friendship and chosen family. It’s as bold and bright as the life
-        Mariela is carving for herself.
-      </Text>
+        <Text>
+          Co-written with a dynamic circle of queer and allied artists,
+          including Grammy-winner Melody Walker, the record’s sound pulses with
+          the energy of friendship and chosen family. It’s as bold and bright as
+          the life Mariela is carving for herself.
+        </Text>
 
-      <Text>
-        Following a 30+ date U.S. tour supporting Billboard-charting artist
-        Flamy Grant, songwriter showcases in Nashville, and Pride events from
-        San Diego to Seattle, Mariela continues to expand her reach and make a
-        lasting impression on audiences far and wide.
-      </Text>
+        <Text>
+          Following a 30+ date U.S. tour supporting Billboard-charting artist
+          Flamy Grant, songwriter showcases in Nashville, and Pride events from
+          San Diego to Seattle, Mariela continues to expand her reach and make a
+          lasting impression on audiences far and wide.
+        </Text>
+      </div>
     </div>
   </div>
 </SplitSection>
@@ -77,12 +79,15 @@ import SplitSection from "./SplitSection.astro";
   }
 
   .content {
-    max-width: 800px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     padding: 4rem;
     background-color: var(--neutral-900);
+  }
+
+  .paragraph-container {
+    max-width: 800px;
   }
 
   .image-wrapper img {
