@@ -5,6 +5,7 @@ interface Props {
   imageSide?: "left" | "right";
   id?: string;
   className?: string;
+  hideImageOnMobile?: boolean;
 }
 
 const {
@@ -13,11 +14,19 @@ const {
   imageSide = "right",
   id,
   className = "",
+  hideImageOnMobile = false,
 } = Astro.props;
 ---
 
 <section
-  class:list={["split-section", className, { reverse: imageSide === "left" }]}
+  class:list={[
+    "split-section",
+    className,
+    {
+      reverse: imageSide === "left",
+      "hide-image-mobile": hideImageOnMobile,
+    },
+  ]}
   id={id}
 >
   <div class="content">
@@ -72,6 +81,10 @@ const {
     }
     .split-section.reverse {
       flex-direction: column;
+    }
+
+    .hide-image-mobile .image {
+      display: none;
     }
 
     .image img {
