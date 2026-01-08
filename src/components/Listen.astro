@@ -11,13 +11,12 @@ import Text from "../components/Text.astro";
   imageAlt="Mariela standing on a stage singing and playing her guitar."
 >
   <div class="left-frame">
-    <Text uppercase color="primary-500" type="heading-sm">Albums</Text>
     <Player client:load album={album} />
   </div>
 </SplitSection>
 <style lang="scss">
   .left-frame {
-    padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
+    // padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
     display: flex;
     flex-direction: column;
     gap: 2rem;

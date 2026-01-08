@@ -5,7 +5,6 @@ interface Props {
   imageSide?: "left" | "right";
   id?: string;
   className?: string;
-  imageMaxHeight?: string;
 }
 
 const {
@@ -14,7 +13,6 @@ const {
   imageSide = "right",
   id,
   className = "",
-  imageMaxHeight,
 } = Astro.props;
 ---
 
@@ -26,12 +24,7 @@ const {
     <slot />
   </div>
   <div class="image">
-    <img
-      src={imageSrc}
-      alt={imageAlt}
-      loading="lazy"
-      style={imageMaxHeight ? `max-height:${imageMaxHeight};` : `100%`}
-    />
+    <img src={imageSrc} alt={imageAlt} loading="lazy" />
   </div>
 </section>
 
@@ -60,9 +53,12 @@ const {
     justify-content: flex-end;
     align-items: stretch;
     overflow: hidden;
+    position: relative;
   }
 
   .image img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
