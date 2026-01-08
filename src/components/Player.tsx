@@ -28,6 +28,7 @@ interface Album {
 interface Props {
   album: Album;
   compact?: boolean;
+  rounded?: boolean;
 }
 
 const formatDuration = (seconds?: number | null) => {
@@ -47,7 +48,11 @@ const formatTime = (seconds?: number | null) => {
   return `${mins}:${secs}`;
 };
 
-const Player: React.FC<Props> = ({ album, compact = false }) => {
+const Player: React.FC<Props> = ({
+  album,
+  compact = false,
+  rounded = false,
+}) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -164,9 +169,16 @@ const Player: React.FC<Props> = ({ album, compact = false }) => {
   const trackRowClass = `${styles.trackRow} ${compact ? styles.trackRowCompact : ""}`;
   const trackTitleClass = `${styles.trackTitle} ${compact ? styles.trackTitleCompact : ""}`;
   const trackButtonClass = `${styles.trackButton} ${compact ? styles.trackButtonCompact : ""}`;
+  const cardClass = [
+    styles.playerCard,
+    compact ? styles.compactCard : "",
+    rounded ? "" : styles.square,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <CardShell className={compact ? styles.compactCard : ""}>
+    <CardShell className={cardClass}>
       <header className={heroClass}>
         <div className={coverWrapClass}>
           <img

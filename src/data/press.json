@@ -1,8 +1,10 @@
 [
   {
     "outlet": "Songwriter Sanctuary News Room",
+    "outlet_id": "efd9ad4d-0f47-4b60-9524-a905fd11fe28",
     "articles": [
       {
+        "article_id": "499a7235-e4b4-4496-93be-a0e63103f919",
         "title": "A Joyful Chronicle of Trans Femme Freedom",
         "url": "https://www.songwritersanctuary-sd.com/news-room/mariela-debuts-the-underglow-a-joyful-chronicle-of-trans-femme-freedom"
       }
@@ -10,8 +12,10 @@
   },
   {
     "outlet": "San Diego Reader",
+    "outlet_id": "33fb39d1-eec8-4140-b490-187b8cfad543",
     "articles": [
       {
+        "article_id": "791d383b-d5c7-4baa-b047-7af55bbb6925",
         "title": "Rachel Hall to Mariela, Nashville to San Diego",
         "url": "https://www.sandiegoreader.com/news/2025/oct/02/rachel-hall-to-mariela-nashville-to-san-diego/"
       }
@@ -19,8 +23,10 @@
   },
   {
     "outlet": "The Times of San Diego",
+    "outlet_id": "e7bc9fdd-ac54-4224-9ac5-99533ab79118",
     "articles": [
       {
+        "article_id": "2552a407-97e6-4155-a08b-20e61d171e0e",
         "title": "Indie Pop Artist Mariela Debuts Album in Goodbye to Chaotic Time",
         "url": "https://timesofsandiego.com/arts/2025/09/28/indie-pop-artist-mariela-debuts-album-in-goodbye-to-chaotic-time/"
       }
@@ -28,16 +34,20 @@
   },
   {
     "outlet": "The San Diego Troubadour",
+    "outlet_id": "cbce66e0-119f-4c9b-b211-d24ca6609203",
     "articles": [
       {
+        "article_id": "f4316382-ad71-4654-b5a3-767177ce6219",
         "title": "Mariela: The Underglow",
         "url": "https://sandiegotroubadour.com/mariela-the-underglow/"
       },
       {
+        "article_id": "c11de761-4e8d-46e4-bf6e-8d86486df201",
         "title": "There's No Coming Back from Moriah",
         "url": "https://sandiegotroubadour.com/theres-no-coming-back-from-moria/"
       },
       {
+        "article_id": "5f0ebd1d-3e84-4f15-a99a-42743d4dbd45",
         "title": "Mariela: A Sanctuary for Rachel Hall",
         "url": "https://sandiegotroubadour.com/mariela-a-sanctuary-for-rachel-hall/"
       }
@@ -45,8 +55,10 @@
   },
   {
     "outlet": "Lightning 100",
+    "outlet_id": "66c1f33e-08a1-4deb-9e49-c56ff1926c07",
     "articles": [
       {
+        "article_id": "aea2d199-5c89-4f68-aa8b-2d941ae2e233",
         "title": "Mariela: Local Artist of the Week",
         "url": "https://lightning100.com/localmusic/mariela-local-artist-of-the-week/"
       }

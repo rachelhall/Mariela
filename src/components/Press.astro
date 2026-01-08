@@ -1,77 +1,111 @@
 ---
 import Text from "./Text.astro";
 import press from "../data/press.json";
+import SplitSection from "./SplitSection.astro";
+
+const excerpts = [
+  {
+    articleId: "f4316382-ad71-4654-b5a3-767177ce6219",
+    quote:
+      "“[The Underglow] is a bright, shimmery pop explosion. But don’t worry, this isn’t sugary, bubblegum pop. This is pop that’s been around the block and has memorized its way from the therapist’s office to the dance floor.”",
+    author: "Lizzie Wann",
+    heading: "The San Diego Troubadour",
+    linkHeading: false,
+  },
+  {
+    articleId: "2552a407-97e6-4155-a08b-20e61d171e0e",
+    quote:
+      "“...celebration, defiance, heartbreak and vulnerability, while still producing danceable tunes with catchy hooks”",
+    author: "Drew Sitton",
+    linkHeading: true,
+  },
+];
+
+const excerptIds = new Set(excerpts.map((excerpt) => excerpt.articleId));
+
+const articleIndex = press.flatMap((outlet) =>
+  outlet.articles.map((article) => ({
+    ...article,
+    outlet: outlet.outlet,
+  }))
+);
+
+const filteredPress = press
+  .map((item) => ({
+    ...item,
+    articles: item.articles.filter(
+      (article) => !excerptIds.has(article.article_id)
+    ),
+  }))
+  .filter((item) => item.articles.length > 0);
+
+const articleById = new Map(
+  articleIndex.map((article) => [article.article_id, article])
+);
+
+const stingers = excerpts.flatMap((excerpt) => {
+  const article = articleById.get(excerpt.articleId);
+  if (!article) return [];
+  return [
+    {
+      ...excerpt,
+      outlet: article.outlet,
+      heading: excerpt.heading ?? article.title,
+      headingUrl: excerpt.linkHeading ? article.url : undefined,
+    },
+  ];
+});
 ---
 
-<section class="press">
+<SplitSection
+  imageSrc="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766784913/marielaGPAD-5_kyt6es.jpg"
+  id="press"
+  imageSide="right"
+>
   <div class="press-content">
-    <div>
-      <div class="stinger">
-        <div class="stinger-text">
-          <Text uppercase color="primary-500" type="heading-xs"
-            >The Underglow</Text
-          >
-          <Text italic color="neutral-100">
-            “...is a bright, shimmery pop explosion. But don’t worry, this isn’t
-            sugary, bubblegum pop. This is pop that’s been around the block and
-            has memorized its way from the therapist’s office to the dance
-            floor.”
-          </Text>
-          <Text color="neutral-300">
-            — Lizzie Wann, <a class="publication">The San Diego Troubadour</a>
-          </Text>
+    <Text color="primary-500" type="heading-sm">Press</Text>
+    {
+      stingers.map((stinger) => (
+        <div class="stinger">
+          <div class="stinger-text">
+            <Text
+              color="primary-500"
+              type="heading-xs"
+              url={stinger.headingUrl}
+            >
+              {stinger.heading}
+            </Text>
+            <Text italic color="neutral-100">
+              {stinger.quote}
+            </Text>
+            <Text color="neutral-300">
+              — {stinger.author}, <a class="publication">{stinger.outlet}</a>
+            </Text>
+          </div>
         </div>
-      </div>
-      <ul>
-        {
-          press.map((item) => (
-            <li>
-              <strong>{item.outlet}</strong>
-              {item.articles.length > 1 ? (
-                <ul class="press-list">
-                  {item.articles.map((article) => (
-                    <li>
-                      <a href={article.url} target="_blank" rel="noreferrer">
-                        {article.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <>
-                  {": "}
-                  <a
-                    href={item.articles[0].url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {item.articles[0].title}
+      ))
+    }
+    <ul>
+      {
+        filteredPress.map((item) => (
+          <li>
+            <strong class="publication">{item.outlet}</strong>
+            <ul class="press-list">
+              {item.articles.map((article) => (
+                <li>
+                  <a href={article.url} target="_blank" rel="noreferrer">
+                    {article.title}
                   </a>
-                </>
-              )}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div class="image-wrapper">
-      <img
-        src="https://res.cloudinary.com/dyspjkmgs/image/upload/v1766784913/marielaGPAD-5_kyt6es.jpg"
-        alt="Photo of Mariela."
-        loading="lazy"
-      />
-    </div>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
   </div>
-</section>
+</SplitSection>
 <style>
-  .press {
-    padding: 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    background-color: var(--neutral-900);
-  }
-
   .stinger {
     padding: 1.5rem;
     border-radius: 1rem;
@@ -99,9 +133,13 @@ import press from "../data/press.json";
 
   .press-content {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
     align-items: flex-start;
     justify-content: space-between;
+    background-color: var(--neutral-900);
+    padding: 4rem;
+    gap: 2rem;
   }
 
   ul {
@@ -129,20 +167,10 @@ import press from "../data/press.json";
     gap: 0.35rem;
   }
 
-  .image-wrapper img {
-    width: min(520px, 38vw);
-    height: max(600px, 50vh);
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow:
-      0 18px 38px rgba(0, 0, 0, 0.22),
-      0 12px 24px rgba(0, 0, 0, 0.16),
-      0 0 0 1px rgba(255, 255, 255, 0.08);
-  }
-
   @media screen and (max-width: 636px) {
-    .press {
-      padding: 1rem;
+    .press-content {
+      padding: 1.5rem;
+      gap: 1rem;
     }
 
     .image-wrapper img {
@@ -152,9 +180,12 @@ import press from "../data/press.json";
     .press-content {
       flex-direction: column;
     }
+    .stinger {
+      padding: 1rem;
+    }
 
     ul {
-      padding: 1.5rem;
+      padding: 0.5rem;
     }
   }
 </style>

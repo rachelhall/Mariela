@@ -30,6 +30,7 @@ interface Props {
   bold?: boolean;
   light?: boolean;
   inline?: boolean;
+  url?: string;
 }
 
 const {
@@ -42,6 +43,7 @@ const {
   className,
   uppercase,
   inline,
+  url,
 } = Astro.props;
 
 const styles = {
@@ -51,6 +53,9 @@ const styles = {
 };
 
 const getElement = () => {
+  if (url) {
+    return "a";
+  }
   switch (type) {
     case "heading-xl":
       return "h1";
@@ -73,8 +78,14 @@ const Element = getElement();
 ---
 
 <Element
-  class:list={[className, { uppercase, bold, italic, light }]}
-  style={styles}><slot /></Element
+  class:list={[
+    className,
+    `type-${type}`,
+    { uppercase, bold, italic, light, "text-link": !!url },
+  ]}
+  href={url}
+  style={styles}
+  ><slot /></Element
 >
 
 <style>
@@ -88,20 +99,60 @@ const Element = getElement();
     margin: 0;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .type-heading-xl,
+  .type-heading-lg,
+  .type-heading-md,
+  .type-heading-sm,
+  .type-heading-xs {
+    font-family: var(--font-heading, system-ui, sans-serif);
+    letter-spacing: 0.02em;
+  }
+
+  .type-heading-xl,
+  .type-heading-lg,
+  .type-heading-md,
+  .type-heading-sm,
+  .type-heading-xs,
+  .type-body {
+    display: block;
+  }
+
   h1 {
+    font-size: 4rem;
+  }
+  .type-heading-xl {
     font-size: 4rem;
   }
   h2 {
     font-size: 3rem;
   }
+  .type-heading-lg {
+    font-size: 3rem;
+  }
   h3 {
+    font-size: 2rem;
+  }
+  .type-heading-md {
     font-size: 2rem;
   }
   h4 {
     font-size: 1.5rem;
   }
+  .type-heading-sm {
+    font-size: 1.5rem;
+  }
 
   h5 {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  .type-heading-xs {
     font-size: 1.25rem;
     font-weight: 400;
   }
@@ -122,21 +173,42 @@ const Element = getElement();
     font-style: italic;
   }
 
+  .text-link {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
   @media screen and (max-width: 636px) {
     h1 {
+      font-size: 2rem;
+    }
+    .type-heading-xl {
       font-size: 2rem;
     }
     h2 {
       font-size: 1.75rem;
     }
+    .type-heading-lg {
+      font-size: 1.75rem;
+    }
     h3 {
+      font-size: 1.5rem;
+    }
+    .type-heading-md {
       font-size: 1.5rem;
     }
     h4 {
       font-size: 1.25rem;
     }
+    .type-heading-sm {
+      font-size: 1.25rem;
+    }
 
     h5 {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .type-heading-xs {
       font-size: 1rem;
       font-weight: 400;
     }
