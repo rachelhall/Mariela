@@ -89,25 +89,16 @@ const stingers = excerpts.flatMap((excerpt) => {
       {
         filteredPress.map((item) => (
           <li>
-            <strong>{item.outlet}</strong>
-            {item.articles.length > 1 ? (
-              <ul class="press-list">
-                {item.articles.map((article) => (
-                  <li>
-                    <a href={article.url} target="_blank" rel="noreferrer">
-                      {article.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <>
-                {": "}
-                <a href={item.articles[0].url} target="_blank" rel="noreferrer">
-                  {item.articles[0].title}
-                </a>
-              </>
-            )}
+            <strong class="publication">{item.outlet}</strong>
+            <ul class="press-list">
+              {item.articles.map((article) => (
+                <li>
+                  <a href={article.url} target="_blank" rel="noreferrer">
+                    {article.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </li>
         ))
       }
@@ -179,7 +170,7 @@ const stingers = excerpts.flatMap((excerpt) => {
   @media screen and (max-width: 636px) {
     .press-content {
       padding: 1.5rem;
-      gap: 2rem;
+      gap: 1rem;
     }
 
     .image-wrapper img {
@@ -189,9 +180,12 @@ const stingers = excerpts.flatMap((excerpt) => {
     .press-content {
       flex-direction: column;
     }
+    .stinger {
+      padding: 1rem;
+    }
 
     ul {
-      padding: 1.5rem;
+      padding: 0.5rem;
     }
   }
 </style>

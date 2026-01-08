@@ -251,6 +251,10 @@
     flex-direction: column;
   }
 
+  .coverWrap {
+    max-width: unset;
+  }
+
   .compact .hero {
     flex-direction: column;
     align-items: flex-start;
